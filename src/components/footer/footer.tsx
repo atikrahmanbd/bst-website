@@ -1,0 +1,217 @@
+import Link from "next/link";
+import Image from "next/image";
+import {
+  Linkedin as LinkedinIcon,
+  Twitter as TwitterIcon,
+  Facebook as FacebookIcon,
+} from "lucide-react";
+import { ThemeColorSwitch } from "@/components/theme-color-switch";
+import { Spotlight } from "@/components/ui/spotlight";
+import { PaymentMethods } from "@/components/footer/payment-methods";
+
+export function Footer() {
+  return (
+    <footer className="border-t border-border bg-background">
+      {/* Let's Talk Section */}
+      <div className="relative border-b border-border/70 overflow-hidden">
+        <Spotlight
+          className="-top-40 left-0 md:left-60 md:-top-20"
+          fill="var(--primary)"
+        />
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-8">
+            {/* Left Side - Contact Info */}
+            <div>
+              <p className="mb-2 text-md font-semibold text-foreground">
+                Looking To Collaborate or Need Expert Support?
+              </p>
+              <p className="mb-4 text-sm text-muted-foreground">
+                We are Here To Help! Reach Out Anytime, and Our Team Will Be
+                Happy To Assist You.
+              </p>
+              <h2 className="mb-16 text-5xl font-extrabold md:text-6xl lg:text-7xl">
+                Let&apos;s Talk
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <p className="mb-1 text-sm text-muted-foreground">
+                    WhatApp Us:
+                  </p>
+                  <a
+                    href="tel:+8801725414131"
+                    className="text-2xl font-semibold hover:text-primary transition-colors"
+                  >
+                    +880-1725-414-131
+                  </a>
+                </div>
+
+                <div>
+                  <p className="mb-1 text-sm text-muted-foreground">
+                    Go To Dashboard:
+                  </p>
+                  <a
+                    href="https://my.bst.com.bd"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-2xl font-semibold hover:text-primary transition-colors"
+                  >
+                    https://my.bst.com.bd
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Side - Email And Social */}
+            <div className="flex flex-col items-center justify-center lg:items-end lg:justify-end gap-20 pt-12">
+              <a
+                href="mailto:hello@bst.com.bd"
+                className="text-4xl font-regular hover:text-primary transition-colors md:text-5xl lg:text-6xl"
+              >
+                hello@bst.com.bd
+              </a>
+
+              <div className="flex items-center gap-12">
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full p-2 hover:bg-secondary transition-all hover:scale-125 hover:text-primary"
+                  aria-label="LinkedIn"
+                >
+                  <LinkedinIcon className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full p-2 hover:bg-secondary transition-all hover:scale-125 hover:text-primary"
+                  aria-label="Twitter"
+                >
+                  <TwitterIcon className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full p-2 hover:bg-secondary transition-all hover:scale-125 hover:text-primary"
+                  aria-label="Facebook"
+                >
+                  <FacebookIcon className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Payment Methods And Color Switcher */}
+          <div className="mt-16 flex items-center justify-between gap-4">
+            <PaymentMethods />
+            <ThemeColorSwitch />
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Section */}
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 opacity-90">
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+          {/* Copyright */}
+          <p className="text-sm text-muted-foreground">
+            Copyrights © 2025,{" "}
+            <span className="font-semibold text-foreground">B.S.T.</span> All
+            Rights Reserved.
+          </p>
+
+          {/* Footer Links */}
+          <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
+            <Link
+              href="/about"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              About Us
+            </Link>
+            <span className="text-primary">•</span>
+            <Link
+              href="/report-abuse"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Report Abuse
+            </Link>
+            <span className="text-primary">•</span>
+            <Link
+              href="/privacy"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Privacy
+            </Link>
+            <span className="text-primary">•</span>
+            <Link
+              href="/cookie"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Cookie
+            </Link>
+            <span className="text-primary">•</span>
+            <Link
+              href="/terms"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Terms & Conditions
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Multilat Attribution - Full Width */}
+      <div className="border-t border-border/70">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center gap-6">
+            <p className="text-xs text-justify text-muted-foreground md:w-[60%]">
+              <span className="font-semibold">
+                B.S.T. | Business. Solution. Technology.
+              </span>{" "}
+              is a proud concern of{" "}
+              <a
+                href="https://multilat.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold hover:text-foreground transition-colors"
+              >
+                Multilat
+              </a>{" "}
+              but operates as an independent legal entity. Each company manages
+              its own business activities and responsibilities. Therefore,
+              B.S.T. shall not be held liable for any legal issues, obligations,
+              or claims arising from Multilat, and vice versa.
+            </p>
+
+            <div className="flex items-center justify-center md:justify-end gap-4 md:w-[40%] md:ml-auto">
+              <span className="text-md text-primary">By</span>
+              <div className="w-0.5 h-6 bg-muted-foreground" />
+              <a
+                href="https://multilat.xyz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center rounded-md py-1.5 transition-colors"
+              >
+                <Image
+                  src="/logos/multilat-logo-for-light.svg"
+                  alt="Multilat"
+                  width={100}
+                  height={30}
+                  className="h-5 w-auto dark:hidden"
+                />
+                <Image
+                  src="/logos/multilat-logo-for-dark.svg"
+                  alt="Multilat"
+                  width={100}
+                  height={30}
+                  className="hidden h-5 w-auto dark:block"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
