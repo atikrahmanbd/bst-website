@@ -621,13 +621,19 @@ export const HoverBorderGradientButton = ({
     icon: "9999px",
   };
 
+  // Extract width classes from className
+  const hasFlexClass = className?.includes("flex-1");
+
   return (
     <HoverBorderGradient
       as="button"
-      containerClassName="cursor-pointer"
+      containerClassName={cn(
+        "cursor-pointer w-full",
+        hasFlexClass && "flex-1"
+      )}
       borderRadius={borderRadiusMap[shape]}
       className={cn(
-        "dark:bg-black bg-white text-black dark:text-white inline-flex items-center justify-center",
+        "dark:bg-black bg-white text-black dark:text-white inline-flex items-center justify-center w-full",
         getSizeClasses(size, shape),
         className
       )}

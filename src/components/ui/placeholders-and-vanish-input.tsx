@@ -407,7 +407,7 @@ export function PlaceholdersAndVanishInput({
           )}
         >
           <Search className="h-4 w-4 flex-shrink-0" />
-          <span className="text-sm font-medium whitespace-nowrap">
+          <span className="hidden sm:inline text-sm font-medium whitespace-nowrap">
             Search Domain
           </span>
         </button>

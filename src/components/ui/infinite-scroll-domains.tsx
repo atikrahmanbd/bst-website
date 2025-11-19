@@ -97,19 +97,19 @@ export const InfiniteScrollDomains = ({
         {items.map((item, idx) => (
           <li
             key={`${item.extension}-${idx}`}
-            className="relative flex h-28 w-28 flex-col items-center justify-between rounded-xl border border-border bg-background/80 p-4 shadow-md transition-all hover:shadow-lg dark:bg-white dark:border-black"
+            className="relative flex h-20 w-20 sm:h-24 sm:w-24 flex-col items-center justify-between rounded-lg sm:rounded-xl border border-border bg-background/80 p-2 sm:p-3 shadow-md transition-all hover:shadow-lg dark:bg-white dark:border-black"
           >
-            <div className="relative flex h-14 w-full items-center justify-center">
+            <div className="relative flex h-10 sm:h-12 w-full items-center justify-center">
               <Image
                 src={item.icon}
                 alt={item.extension}
-                width={80}
-                height={56}
-                className="h-auto w-auto max-h-14 object-contain"
+                width={64}
+                height={48}
+                className="h-auto w-auto max-h-10 sm:max-h-12 object-contain"
               />
             </div>
             <div className="text-center">
-              <p className="text-md font-semibold text-foreground dark:text-black">
+              <p className="text-sm sm:text-base font-semibold text-foreground dark:text-black">
                 {item.price}
               </p>
             </div>

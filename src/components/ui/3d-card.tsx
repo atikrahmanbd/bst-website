@@ -182,65 +182,65 @@ export const Skeleton = () => {
   }, []);
 
   const getSize = (index: number) => {
-    if (index === 3) return "h-28 w-28"; // Center (4th icon) - largest
-    if (index === 2 || index === 4) return "h-24 w-24"; // Positions 3 and 5
-    if (index === 1 || index === 5) return "h-20 w-20"; // Positions 2 and 6
-    return "h-16 w-16"; // First and last - smallest
+    if (index === 3) return "h-16 w-16 sm:h-20 sm:w-20 md:h-28 md:w-28"; // Center (4th icon) - largest
+    if (index === 2 || index === 4) return "h-14 w-14 sm:h-18 sm:w-18 md:h-24 md:w-24"; // Positions 3 and 5
+    if (index === 1 || index === 5) return "h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20"; // Positions 2 and 6
+    return "h-10 w-10 sm:h-14 sm:w-14 md:h-16 md:w-16"; // First and last - smallest
   };
 
   const getIconSize = (index: number) => {
-    if (index === 3) return "h-24 w-24"; // Center - largest
-    if (index === 2 || index === 4) return "h-18 w-18"; // Positions 3 and 5
-    if (index === 1 || index === 5) return "h-16 w-16"; // Positions 2 and 6
-    return "h-16 w-16"; // First and last - smallest
+    if (index === 3) return "h-14 w-14 sm:h-16 sm:w-16 md:h-24 md:w-24"; // Center - largest
+    if (index === 2 || index === 4) return "h-12 w-12 sm:h-14 sm:w-14 md:h-18 md:w-18"; // Positions 3 and 5
+    if (index === 1 || index === 5) return "h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16"; // Positions 2 and 6
+    return "h-8 w-8 sm:h-10 sm:w-10 md:h-16 md:w-16"; // First and last - smallest
   };
 
   return (
-    <div className="p-8 overflow-hidden h-full relative flex items-center justify-center">
-      <div className="flex flex-row shrink-0 justify-center items-center gap-4">
-        <Container className={`${getSize(0)} circle-1`}>
+    <div className="p-2 sm:p-4 md:p-8 overflow-hidden h-full relative flex items-center justify-center">
+      <div className="flex flex-row shrink-0 justify-center items-center gap-1 sm:gap-2 md:gap-4">
+        <Container className={`${getSize(0)} circle-1 hidden md:flex`}>
           <TechStackLogo
             name={visibleStacks[0]}
             className={`${getIconSize(0)}`}
             animationPhase={animationPhase}
           />
         </Container>
-        <Container className={`${getSize(1)} circle-2`}>
+        <Container className={`${getSize(1)} circle-2 flex`}>
           <TechStackLogo
             name={visibleStacks[1]}
             className={`${getIconSize(1)}`}
             animationPhase={animationPhase}
           />
         </Container>
-        <Container className={`${getSize(2)} circle-3`}>
+        <Container className={`${getSize(2)} circle-3 flex`}>
           <TechStackLogo
             name={visibleStacks[2]}
             className={`${getIconSize(2)}`}
             animationPhase={animationPhase}
           />
         </Container>
-        <Container className={`${getSize(3)} circle-4`}>
+        <Container className={`${getSize(3)} circle-4 flex`}>
           <TechStackLogo
             name={visibleStacks[3]}
             className={`${getIconSize(3)}`}
             animationPhase={animationPhase}
           />
         </Container>
-        <Container className={`${getSize(4)} circle-5`}>
+        <Container className={`${getSize(4)} circle-5 flex`}>
           <TechStackLogo
             name={visibleStacks[4]}
             className={`${getIconSize(4)}`}
             animationPhase={animationPhase}
           />
         </Container>
-        <Container className={`${getSize(5)} circle-6`}>
+        <Container className={`${getSize(5)} circle-6 flex`}>
           <TechStackLogo
             name={visibleStacks[5]}
             className={`${getIconSize(5)}`}
             animationPhase={animationPhase}
           />
         </Container>
-        <Container className={`${getSize(6)} circle-7`}>
+        <Container className={`${getSize(6)} circle-7 hidden md:flex`}>
           <TechStackLogo
             name={visibleStacks[6]}
             className={`${getIconSize(6)}`}
@@ -380,7 +380,7 @@ export const CardSkeletonContainer = ({
   return (
     <div
       className={cn(
-        "h-[15rem] md:h-[20rem] rounded-xl z-40",
+        "h-[8rem] sm:h-[10rem] md:h-[12rem] lg:h-[14rem] rounded-xl z-40",
         className,
         showGradient &&
           "bg-neutral-300 dark:bg-[rgba(40,40,40,0.70)] [mask-image:radial-gradient(50%_50%_at_50%_50%,white_0%,transparent_100%)]"

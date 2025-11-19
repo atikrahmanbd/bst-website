@@ -18,43 +18,43 @@ export function Footer() {
           className="-top-40 left-0 md:left-60 md:-top-20"
           fill="var(--primary)"
         />
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-8">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:py-16 md:py-20 sm:px-6 lg:px-8">
+          <div className="grid gap-8 sm:gap-10 md:gap-12 lg:grid-cols-2 lg:gap-8">
             {/* Left Side - Contact Info */}
-            <div>
-              <p className="mb-2 text-md font-semibold text-foreground">
+            <div className="text-center md:text-left">
+              <p className="mb-2 text-sm sm:text-md font-semibold text-foreground">
                 Looking To Collaborate or Need Expert Support?
               </p>
-              <p className="mb-4 text-sm text-muted-foreground">
+              <p className="mb-4 text-xs sm:text-sm text-muted-foreground">
                 We are Here To Help! Reach Out Anytime, and Our Team Will Be
                 Happy To Assist You.
               </p>
-              <h2 className="mb-16 text-5xl font-extrabold md:text-6xl lg:text-7xl">
+              <h2 className="mb-8 sm:mb-12 md:mb-16 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold">
                 Let&apos;s Talk
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <p className="mb-1 text-sm text-muted-foreground">
+                  <p className="mb-1 text-xs sm:text-sm text-muted-foreground">
                     WhatApp Us:
                   </p>
                   <a
                     href="tel:+8801725414131"
-                    className="text-2xl font-semibold hover:text-primary transition-colors"
+                    className="text-lg sm:text-xl md:text-2xl font-semibold hover:text-primary transition-colors block"
                   >
                     +880-1725-414-131
                   </a>
                 </div>
 
                 <div>
-                  <p className="mb-1 text-sm text-muted-foreground">
+                  <p className="mb-1 text-xs sm:text-sm text-muted-foreground">
                     Go To Dashboard:
                   </p>
                   <a
                     href="https://my.bst.com.bd"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-2xl font-semibold hover:text-primary transition-colors"
+                    className="text-lg sm:text-xl md:text-2xl font-semibold hover:text-primary transition-colors break-all block"
                   >
                     https://my.bst.com.bd
                   </a>
@@ -63,15 +63,15 @@ export function Footer() {
             </div>
 
             {/* Right Side - Email And Social */}
-            <div className="flex flex-col items-center justify-center lg:items-end lg:justify-end gap-20 pt-12">
+            <div className="flex flex-col items-center justify-center lg:items-end lg:justify-end gap-12 sm:gap-16 md:gap-20 pt-8 sm:pt-10 md:pt-12">
               <a
                 href="mailto:hello@bst.com.bd"
-                className="text-4xl font-regular hover:text-primary transition-colors md:text-5xl lg:text-6xl"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-regular hover:text-primary transition-colors break-all text-center lg:text-right"
               >
                 hello@bst.com.bd
               </a>
 
-              <div className="flex items-center gap-12">
+              <div className="flex items-center gap-8 sm:gap-10 md:gap-12">
                 <a
                   href="https://linkedin.com"
                   target="_blank"
@@ -104,7 +104,7 @@ export function Footer() {
           </div>
 
           {/* Payment Methods And Color Switcher */}
-          <div className="mt-16 flex items-center justify-between gap-4">
+          <div className="mt-12 sm:mt-14 md:mt-16 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
             <PaymentMethods />
             <ThemeColorSwitch />
           </div>
@@ -112,17 +112,17 @@ export function Footer() {
       </div>
 
       {/* Bottom Section */}
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 opacity-90">
-        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8 sm:px-6 lg:px-8 opacity-90">
+        <div className="flex flex-col items-center justify-between gap-3 sm:gap-4 md:flex-row">
           {/* Copyright */}
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs sm:text-sm text-muted-foreground text-center md:text-left">
             Copyrights © 2025,{" "}
             <span className="font-semibold text-foreground">B.S.T.</span> All
             Rights Reserved.
           </p>
 
           {/* Footer Links */}
-          <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
+          <div className="flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm">
             <Link
               href="/about"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -163,9 +163,9 @@ export function Footer() {
 
       {/* Multilat Attribution - Full Width */}
       <div className="border-t border-border/70">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <p className="text-xs text-justify text-muted-foreground md:w-[60%]">
+        <div className="mx-auto max-w-7xl px-4 pt-4 pb-8 sm:py-6 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center gap-4 sm:gap-6">
+            <p className="text-[10px] sm:text-xs text-justify text-muted-foreground md:w-[60%]">
               <span className="font-semibold">
                 B.S.T. | Business. Solution. Technology.
               </span>{" "}
@@ -184,9 +184,9 @@ export function Footer() {
               or claims arising from Multilat, and vice versa.
             </p>
 
-            <div className="flex items-center justify-center md:justify-end gap-4 md:w-[40%] md:ml-auto">
-              <span className="text-md text-primary">By</span>
-              <div className="w-0.5 h-6 bg-muted-foreground" />
+            <div className="flex items-center justify-center md:justify-end gap-3 sm:gap-4 md:w-[40%] md:ml-auto">
+              <span className="text-sm sm:text-md text-primary">By</span>
+              <div className="w-0.5 h-5 sm:h-6 bg-muted-foreground" />
               <a
                 href="https://multilat.xyz"
                 target="_blank"
@@ -198,14 +198,14 @@ export function Footer() {
                   alt="Multilat"
                   width={100}
                   height={30}
-                  className="h-5 w-auto dark:hidden"
+                  className="h-4 sm:h-5 w-auto dark:hidden"
                 />
                 <Image
                   src="/logos/multilat-logo-for-dark.svg"
                   alt="Multilat"
                   width={100}
                   height={30}
-                  className="hidden h-5 w-auto dark:block"
+                  className="hidden h-4 sm:h-5 w-auto dark:block"
                 />
               </a>
             </div>

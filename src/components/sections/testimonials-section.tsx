@@ -43,14 +43,14 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section className="relative py-20 px-4 dark:bg-black/50 border-t border-border">
+    <section className="relative py-12 sm:py-16 md:py-20 px-4 dark:bg-black/50 border-t border-border">
       <div className="mx-auto w-full max-w-7xl">
         {/* Title And Subheading */}
-        <div className="text-center mb-12">
-          <h2 className="mb-4 text-2xl md:text-3xl lg:text-4xl font-bold text-slate-700 dark:text-slate-300">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-700 dark:text-slate-300">
             <GradientText>What Our Clients Say</GradientText>
           </h2>
-          <p className="mb-12 max-w-2xl mx-auto text-lg text-muted-foreground md:text-xl leading-relaxed">
+          <p className="px-4 mb-6 sm:mb-8 md:mb-12 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground md:text-xl leading-relaxed">
             Hear From Our Satisfied Customers About Their Experience With Our
             Hosting And Digital Services
           </p>

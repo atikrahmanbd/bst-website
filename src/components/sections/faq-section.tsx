@@ -145,14 +145,14 @@ export const items = [
 
 export function FaqSection() {
   return (
-    <section className="relative py-20 px-4">
+    <section className="relative py-12 sm:py-16 md:py-20 px-4">
       <div className="mx-auto w-full max-w-7xl">
         {/* Title And Subheading */}
-        <div className="text-center mb-12">
-          <h2 className="mb-4 text-xl md:text-2xl lg:text-3xl font-bold text-slate-700 dark:text-slate-300">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <h2 className="mb-3 sm:mb-4 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-slate-700 dark:text-slate-300">
             Frequently Asked Questions
           </h2>
-          <p className="mb-12 max-w-2xl mx-auto text-lg text-muted-foreground md:text-xl leading-relaxed">
+          <p className="px-4 mb-6 sm:mb-8 md:mb-12 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground md:text-xl leading-relaxed">
             Find Answers To Common Questions About Our Hosting, Domains, and
             Digital Services
           </p>
@@ -174,10 +174,10 @@ export function FaqSection() {
                 <AccordionPrimitive.Header className="flex">
                   <AccordionPrimitive.Trigger
                     className={cn(
-                      "group focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md px-5 py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50"
+                      "group focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-3 sm:gap-4 rounded-md px-3 sm:px-4 md:px-5 py-3 sm:py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50"
                     )}
                   >
-                    <span className="flex items-center gap-4">
+                    <span className="flex items-center gap-2 sm:gap-3 md:gap-4">
                       <item.icon className="size-4 shrink-0" />
                       <span>{item.category}</span>
                     </span>
@@ -190,15 +190,15 @@ export function FaqSection() {
                       <AccordionItem
                         key={i}
                         value={`faq-${i}`}
-                        className="bg-accent dark:bg-accent/50 px-5 border-b last:border-b-0"
+                        className="bg-accent dark:bg-accent/50 px-3 sm:px-4 md:px-5 border-b last:border-b-0"
                       >
                         <AccordionPrimitive.Header className="flex data-[state=open]:border-b border-primary/50">
-                          <AccordionPrimitive.Trigger className="group focus-visible:ring-ring/50 flex w-full items-center gap-4 rounded-sm py-4 font-medium outline-none focus-visible:z-10 focus-visible:ring-[3px] hover:no-underline">
+                          <AccordionPrimitive.Trigger className="group focus-visible:ring-ring/50 flex w-full items-center gap-2 sm:gap-3 md:gap-4 rounded-sm py-3 sm:py-4 text-sm sm:text-base font-medium outline-none focus-visible:z-10 focus-visible:ring-[3px] hover:no-underline">
                             <ChevronDownIcon className="text-muted-foreground pointer-events-none size-4 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                             {faq.title}
                           </AccordionPrimitive.Trigger>
                         </AccordionPrimitive.Header>
-                        <AccordionContent className="text-muted-foreground pb-4 pt-2">
+                        <AccordionContent className="text-muted-foreground text-sm sm:text-base pb-3 sm:pb-4 pt-2">
                           {faq.content}
                         </AccordionContent>
                       </AccordionItem>

@@ -22,6 +22,7 @@ const PAYMENT_ICONS = [
   { icon: "visa", alt: "Visa" },
   { icon: "mastercard", alt: "Mastercard" },
   { icon: "discover", alt: "Discover" },
+  { icon: "unionpay", alt: "UnionPay" },
   { icon: "american-express", alt: "American Express" },
   // Digital Wallets
   { icon: "paypal", alt: "PayPal" },
@@ -32,24 +33,25 @@ const PAYMENT_ICONS = [
 
 export function PaymentMethods({
   iconStyle = "outline",
-  iconWidth = 66,
-  iconHeight = 44,
+  iconWidth = 57,
+  iconHeight = 38,
   borderColor = "border-border dark:border-black/50",
-  borderWidth = "border-2 dark:border-3",
+  borderWidth = "border-2 sm:border-2 sm:dark:border-3",
   backgroundColor = "bg-white dark:bg-white/90",
   borderRadius = "rounded-sm",
 }: PaymentMethodsProps) {
   // Logo Style - No Wrapper
   if (iconStyle === "logo") {
     return (
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="w-full grid grid-cols-6 sm:flex sm:flex-wrap items-center gap-0.5 sm:gap-2">
         {PAYMENT_ICONS.map(({ icon, alt }) => (
-          <div key={icon} className="hover-shake">
+          <div key={icon} className="hover-shake w-full flex justify-center">
             <Image
               src={`/payment-logos/${icon}.svg`}
               alt={alt}
               width={iconWidth}
               height={iconHeight}
+              className="w-full max-w-[50px] h-auto sm:w-auto sm:h-[38px] sm:max-w-none"
             />
           </div>
         ))}
@@ -59,18 +61,17 @@ export function PaymentMethods({
 
   // Flat, Rounded, And Outline Styles With Tailwind Classes
   return (
-    <div className="flex flex-wrap items-center gap-2">
+    <div className="w-full grid grid-cols-6 sm:flex sm:flex-wrap items-center gap-y-3 sm:gap-2">
       {PAYMENT_ICONS.map(({ icon, alt }) => (
-        <div key={icon} className="hover-shake">
+        <div key={icon} className="hover-shake w-full flex justify-center">
           <div
             className={cn(
-              "inline-block overflow-hidden",
+              "inline-block overflow-hidden w-full max-w-[50px] h-auto aspect-[57/38] sm:w-[57px] sm:h-[38px] sm:max-w-none sm:aspect-auto",
               borderWidth,
               borderColor,
               backgroundColor,
               borderRadius
             )}
-            style={{ width: iconWidth, height: iconHeight }}
           >
             <Image
               src={`/payment-logos/${icon}.svg`}

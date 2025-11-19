@@ -39,14 +39,14 @@ export function TrustedBrands() {
   ];
 
   return (
-    <section className="relative pt-0 pb-20 px-4 dark:bg-black/50 border-b border-border">
+    <section className="relative pt-0 pb-12 sm:pb-16 md:pb-20 px-4 dark:bg-black/50 border-b border-border">
       <div className="mx-auto w-full max-w-7xl">
         {/* Title And Subheading */}
-        <div className="text-center mb-12">
-          <h2 className="mb-4 text-xl md:text-2xl lg:text-3xl font-bold text-slate-700 dark:text-slate-300">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <h2 className="mb-3 sm:mb-4 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-slate-700 dark:text-slate-300">
             Trusted By Companies & Brands
           </h2>
-          <p className="mb-12 max-w-2xl mx-auto text-lg text-muted-foreground md:text-xl leading-relaxed">
+          <p className="px-4 mb-6 sm:mb-8 md:mb-12 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground md:text-xl leading-relaxed">
             Businesses Across Bangladesh Trust Us For Hosting, Web Design,
             Software Development, IT Solutions, and Ongoing Support
           </p>
