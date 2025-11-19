@@ -182,18 +182,6 @@ export function Navbar() {
 
   const moreServicesItems = [
     {
-      label: "Software Dev",
-      ariaLabel: "Software Development",
-      link: "/services/software-development",
-      icon: Code,
-    },
-    {
-      label: "Mobile Apps",
-      ariaLabel: "Mobile App Development",
-      link: "/services/mobile-apps",
-      icon: Smartphone,
-    },
-    {
       label: "IT Solutions",
       ariaLabel: "IT Solutions",
       link: "/services/it-solutions",
@@ -204,6 +192,18 @@ export function Navbar() {
       ariaLabel: "SEO And Marketing",
       link: "/services/seo-marketing",
       icon: TrendingUp,
+    },
+    {
+      label: "Mobile Apps",
+      ariaLabel: "Mobile App Development",
+      link: "/services/mobile-apps",
+      icon: Smartphone,
+    },
+    {
+      label: "Software Development",
+      ariaLabel: "Software Development",
+      link: "/services/software-development",
+      icon: Code,
     },
   ];
 
@@ -243,7 +243,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 left-0 bottom-0 w-[280px] bg-background border-r border-border z-[70] md:hidden overflow-y-auto"
+              className="fixed top-0 left-0 bottom-0 w-[75%] w-min-[200px] bg-background border-r border-border z-[70] md:hidden overflow-y-auto"
             >
               <div className="flex flex-col h-full">
                 {/* Header */}
