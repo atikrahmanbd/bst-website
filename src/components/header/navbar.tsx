@@ -499,6 +499,16 @@ export function Navbar() {
                 Login
               </HoverBorderGradientButton>
             </Link>
+            <Link href="/login" className="block md:hidden">
+              <HoverBorderGradientButton
+                shape="pill"
+                size="sm"
+                className="px-3 py-1.5 text-[0.8125rem]"
+              >
+                <LogIn className="h-3 w-3 mr-1.5" />
+                Login
+              </HoverBorderGradientButton>
+            </Link>
           </div>
         </div>
 
