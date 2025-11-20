@@ -266,13 +266,6 @@
   }
 }
 
-/* Bengali Text Rendering - Fixes iOS Dotted Circle Issue */
-.bengali-text {
-  font-family: var(--font-hind-siliguri), sans-serif;
-  font-feature-settings: "liga" 1, "calt" 1;
-  font-variant-ligatures: common-ligatures contextual;
-  -webkit-font-smoothing: antialiased;
-}
 
 @keyframes first {
   0% {

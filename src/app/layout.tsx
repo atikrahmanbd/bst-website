@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Be_Vietnam_Pro, Hind_Siliguri } from "next/font/google";
+import { Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeColorProvider } from "@/components/theme-context";
@@ -10,12 +10,6 @@ const beVietnamPro = Be_Vietnam_Pro({
 	variable: "--font-be-vietnam-pro",
 	subsets: ["latin"],
 	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
-
-const hindSiliguri = Hind_Siliguri({
-	variable: "--font-hind-siliguri",
-	subsets: ["bengali"],
-	weight: ["400", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -31,7 +25,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body
-				className={`${beVietnamPro.variable} ${hindSiliguri.variable} font-sans antialiased`}
+				className={`${beVietnamPro.variable} font-sans antialiased`}
 				suppressHydrationWarning
 			>
 				<ThemeProvider

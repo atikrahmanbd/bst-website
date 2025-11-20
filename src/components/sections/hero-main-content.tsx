@@ -22,28 +22,25 @@ export function HeroMainContent() {
       { text: "এক্সটেনশন" },
     ],
     [
-      { text: "অটোমেটেড", className: "text-primary dark:text-primary" },
+      { text: "পুরোপুরি", className: "text-primary dark:text-primary" },
+      { text: "অটোমেটেড" },
       { text: "বিলিং" },
       { text: "ও" },
       { text: "এক্টিভেশন" },
     ],
     [
       { text: "বিকাশ", className: "text-pink-500 dark:text-pink-500" },
-      { text: "সহ সব" },
+      { text: "সহ" },
+      { text: "সকল" },
       { text: "মোবাইল", className: "text-primary dark:text-primary" },
-      { text: "ব্যাংকিং", className: "text-primary dark:text-primary" },
-      { text: "সাপোর্ট" },
+      { text: "ব্যাংকিং সাপোর্ট", className: "text-primary dark:text-primary" },
     ],
     [
       { text: "ওয়েব ডিজাইন", className: "text-blue-500 dark:text-blue-500" },
-      {
-        text: " - ডেভেলপমেন্ট",
-        className: "text-primary dark:text-primary",
-      },
       { text: "ও" },
-      { text: "মার্কেটিং", className: "text-purple-500 dark:text-orange-500" },
+      { text: "ডেভেলপমেন্ট", className: "text-primary dark:text-primary" },
     ],
-    [{ text: "এসইও" }, { text: " - ডিজিটাল মার্কেটিং" }, { text: "সার্ভিস" }],
+    [{ text: "ডিজিটাল" }, { text: "মার্কেটিং" }, { text: "সার্ভিস" }],
     [
       { text: "Meets" },
       { text: "Complete" },
@@ -71,7 +68,7 @@ export function HeroMainContent() {
 
       {/* Main Heading */}
       <motion.div
-        className="mb-8 sm:mb-12"
+        className="mb-4 sm:mb-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -82,7 +79,7 @@ export function HeroMainContent() {
           </h2>
           <CyclingTypewriterSmooth
             sentences={heroSentences}
-            className="flex justify-center items-center my-0 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-bold text-slate-700 dark:text-slate-300 leading-relaxed px-2 bengali-text"
+            className="flex justify-center items-center pb-0 my-0 text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-bold text-slate-700 dark:text-slate-300 leading-relaxed px-2"
             cursorClassName="bg-primary"
             typingDuration={800}
             pauseDuration={2500}

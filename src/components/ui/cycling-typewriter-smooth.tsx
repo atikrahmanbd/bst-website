@@ -51,29 +51,19 @@ export function CyclingTypewriterSmooth({
   ]);
 
   const currentSentence = sentences[currentIndex];
-  const wordsArray = currentSentence.map((word) => ({
-    ...word,
-    text: word.text.split(""),
-  }));
 
   const renderWords = () => {
     return (
       <div>
-        {wordsArray.map((word, idx) => {
-          return (
-            <div key={`word-${idx}`} className="inline-block">
-              {word.text.map((char, index) => (
-                <span
-                  key={`char-${index}`}
-                  className={cn(`dark:text-white text-black `, word.className)}
-                >
-                  {char}
-                </span>
-              ))}
-              &nbsp;
-            </div>
-          );
-        })}
+        {currentSentence.map((word, idx) => (
+          <span
+            key={`word-${idx}`}
+            className={cn(`dark:text-white text-black`, word.className)}
+          >
+            {word.text}
+            {idx < currentSentence.length - 1 && " "}
+          </span>
+        ))}
       </div>
     );
   };
