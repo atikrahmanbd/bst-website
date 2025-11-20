@@ -234,7 +234,7 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/50 backdrop-blur-md z-[60] md:hidden"
+              className="fixed inset-0 bg-black/40 backdrop-blur-md z-[60] md:hidden"
             />
 
             {/* Drawer */}
@@ -243,7 +243,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 left-0 bottom-0 w-[75%] w-min-[200px] bg-background border-r border-border z-[70] md:hidden overflow-y-auto"
+              className="fixed top-0 left-0 bottom-0 w-[75%] w-min-[200px] bg-background/60 backdrop-blur-sm border-r border-border z-[70] md:hidden overflow-y-auto"
             >
               <div className="flex flex-col h-full">
                 {/* Header */}
