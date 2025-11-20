@@ -40,9 +40,9 @@ export const AnimatedTestimonials = ({
     }
   }, [autoplay, handleNext]);
 
-  // Generate fixed rotations based on index for consistent SSR/client rendering
+  // Generate Fixed Rotations Based On Index For Consistent SSR/Client Rendering
   const getRotation = (index: number) => {
-    const rotations = [6, -3, 4, -6, 3]; // Fixed rotations for each card
+    const rotations = [6, -3, 4, -6, 3]; // Fixed Rotations For Each Card
     return rotations[index % rotations.length];
   };
 
@@ -123,29 +123,45 @@ export const AnimatedTestimonials = ({
               {testimonials[active].designation}
             </p>
             <motion.p className="mt-8 text-lg text-gray-500 dark:text-neutral-300">
-              {testimonials[active].quote.split(" ").map((word, index) => (
-                <motion.span
-                  key={index}
-                  initial={{
-                    filter: "blur(10px)",
-                    opacity: 0,
-                    y: 5,
-                  }}
-                  animate={{
-                    filter: "blur(0px)",
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    duration: 0.2,
-                    ease: "easeInOut",
-                    delay: 0.02 * index,
-                  }}
-                  className="inline-block"
-                >
-                  {word}&nbsp;
-                </motion.span>
-              ))}
+              {(() => {
+                const maxLength = 80; // Character Limit For ~3 Lines
+                const quote = testimonials[active].quote;
+                let displayText = quote;
+
+                if (quote.length > maxLength) {
+                  // Truncate At Word Boundary
+                  displayText = quote.slice(0, maxLength);
+                  const lastSpace = displayText.lastIndexOf(" ");
+                  if (lastSpace > 0) {
+                    displayText = displayText.slice(0, lastSpace);
+                  }
+                  displayText += "...";
+                }
+
+                return displayText.split(" ").map((word, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{
+                      filter: "blur(10px)",
+                      opacity: 0,
+                      y: 5,
+                    }}
+                    animate={{
+                      filter: "blur(0px)",
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    transition={{
+                      duration: 0.2,
+                      ease: "easeInOut",
+                      delay: 0.02 * index,
+                    }}
+                    className="inline-block"
+                  >
+                    {word}&nbsp;
+                  </motion.span>
+                ));
+              })()}
             </motion.p>
           </motion.div>
           <div className="flex gap-4 pt-12 md:pt-0 justify-center md:justify-start">
