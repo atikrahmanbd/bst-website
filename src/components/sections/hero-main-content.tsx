@@ -82,7 +82,7 @@ export function HeroMainContent() {
           </h2>
           <CyclingTypewriterSmooth
             sentences={heroSentences}
-            className="flex justify-center items-center my-0 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-bold text-slate-700 dark:text-slate-300 leading-relaxed px-2"
+            className="flex justify-center items-center my-0 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-bold text-slate-700 dark:text-slate-300 leading-relaxed px-2 bengali-text"
             cursorClassName="bg-primary"
             typingDuration={800}
             pauseDuration={2500}
