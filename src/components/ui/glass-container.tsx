@@ -26,6 +26,7 @@ export function GlassContainer({
 				"border border-border/70 bg-white/20 shadow-2xl backdrop-blur-lg",
 				outerPadding,
 				"dark:bg-black/30",
+				"h-full",
 				className
 			)}
 		>
@@ -33,6 +34,7 @@ export function GlassContainer({
 				innerBorderRadius,
 				"border border-border/80 bg-white/60 backdrop-blur-sm dark:bg-black/60",
 				innerPadding,
+				"h-full",
 				innerClassName
 			)}>
 				{children}
