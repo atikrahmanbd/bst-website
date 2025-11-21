@@ -139,20 +139,9 @@ export function HostingPlans() {
               className="relative h-full"
             >
               {plan.popular ? (
-                <ElectricBorder
-                  color="#00EFAE"
-                  speed={0.8}
-                  chaos={0.3}
-                  thickness={4}
-                  style={{
-                    borderRadius: 16,
-                    overflow: "visible",
-                    position: "relative",
-                    zIndex: 20,
-                  }}
-                  className="h-full"
-                >
-                  <div className="p-8 flex flex-col h-full rounded-2xl backdrop-blur-sm overflow-visible bg-primary/5 shadow-xl border border-white/5">
+                <>
+                  {/* Mobile Version - Dotted Border */}
+                  <div className="lg:hidden p-8 flex flex-col h-full rounded-2xl bg-primary/5 border-2 border-primary hover:border-dashed border-dotted transition-colors">
                     <div className="mb-6">
                       <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                       <p className="text-sm text-muted-foreground mb-4">
@@ -208,13 +197,93 @@ export function HostingPlans() {
                       </BorderMagicButton>
                     </a>
                   </div>
-                </ElectricBorder>
+
+                  {/* Desktop Version - ElectricBorder */}
+                  <div className="hidden lg:block h-full">
+                    <ElectricBorder
+                      color="#00EFAE"
+                      speed={0.8}
+                      chaos={0.3}
+                      thickness={4}
+                      style={{
+                        borderRadius: 16,
+                        overflow: "visible",
+                        position: "relative",
+                        zIndex: 20,
+                      }}
+                      className="h-full"
+                    >
+                      <div className="p-8 flex flex-col h-full rounded-2xl backdrop-blur-sm overflow-visible bg-primary/5 shadow-xl border border-white/5">
+                        <div className="mb-6">
+                          <h3 className="text-2xl font-bold mb-2">
+                            {plan.name}
+                          </h3>
+                          <p className="text-sm text-muted-foreground mb-4">
+                            {plan.description}
+                          </p>
+                          {(() => {
+                            const pricing = calculatePrice(plan.monthlyPrice);
+                            return (
+                              <div>
+                                <div className="flex items-baseline gap-2">
+                                  {pricing.hasDiscount && (
+                                    <span className="text-2xl font-semibold text-muted-foreground line-through">
+                                      ৳{pricing.originalMonthly}
+                                    </span>
+                                  )}
+                                  <span className="text-4xl font-bold text-primary">
+                                    ৳{pricing.discountedMonthly}
+                                  </span>
+                                  <span className="text-muted-foreground">
+                                    /month
+                                  </span>
+                                </div>
+                                {pricing.hasDiscount && (
+                                  <p className="text-sm text-primary mt-2">
+                                    Total: ৳
+                                    {pricing.totalPrice.toLocaleString()} for{" "}
+                                    {selectedYears}{" "}
+                                    {selectedYears === 1 ? "year" : "years"}
+                                  </p>
+                                )}
+                              </div>
+                            );
+                          })()}
+                        </div>
+
+                        <div className="flex-1 flex flex-col">
+                          <ul className="space-y-3 mb-8 flex-1">
+                            {plan.features.map((feature, i) => (
+                              <li key={i} className="flex items-start gap-3">
+                                <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                                <span className="text-sm">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <a
+                          href="/order"
+                          className="block w-full cursor-pointer"
+                        >
+                          <BorderMagicButton
+                            className="w-full cursor-pointer"
+                            size="lg"
+                            shape="pill"
+                          >
+                            Get Started
+                          </BorderMagicButton>
+                        </a>
+                      </div>
+                    </ElectricBorder>
+                  </div>
+                </>
               ) : (
                 <div
                   className="p-8 flex flex-col h-full rounded-2xl bg-card/80 border-2 hover:border-dashed border-dotted transition-colors"
                   style={{
                     borderColor:
-                      plan.name === "Starter" ? "#334EFC" : "#e7000b",
+                      plan.name === "Starter" ? "#007FFF" : "#e7000b",
                   }}
                 >
                   <div className="mb-6">
