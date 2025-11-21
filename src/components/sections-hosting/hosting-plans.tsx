@@ -10,11 +10,11 @@ import {
 import ElectricBorder from "@/components/ui/react-bits/ElectricBorder";
 import { useState } from "react";
 
-const plans = [
+export const plans = [
   {
     name: "Starter",
     monthlyPrice: 250,
-    description: "Perfect For Personal Websites And Blogs",
+    description: "Perfect For Personal Websites/Blogs",
     features: [
       "1 Website",
       "10 GB SSD Storage",
@@ -30,7 +30,7 @@ const plans = [
   {
     name: "Business",
     monthlyPrice: 450,
-    description: "Ideal For Growing Businesses And E-Commerce",
+    description: "Ideal For Growing Businesses",
     features: [
       "5 Websites",
       "50 GB SSD Storage",
@@ -46,8 +46,8 @@ const plans = [
   },
   {
     name: "Professional",
-    monthlyPrice: 950,
-    description: "For High-Traffic Sites And Applications",
+    monthlyPrice: 850,
+    description: "For High-Traffic and Applications",
     features: [
       "Unlimited Websites",
       "100 GB SSD Storage",
@@ -92,10 +92,7 @@ export function HostingPlans() {
   };
 
   return (
-    <section
-      id="plans"
-      className="relative py-12 sm:py-16 md:py-20 md:pb-40 px-4"
-    >
+    <section id="plans" className="relative py-12 sm:py-16 md:py-20 md:pb-40">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-8">
         {/* Title */}
         <div className="text-center mb-20">
@@ -128,7 +125,7 @@ export function HostingPlans() {
         </div>
 
         {/* Plans Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-2 sm:px-4 md:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -161,16 +158,14 @@ export function HostingPlans() {
                                 ৳{pricing.discountedMonthly}
                               </span>
                               <span className="text-muted-foreground">
-                                /month
+                                /Month
                               </span>
                             </div>
-                            {pricing.hasDiscount && (
-                              <p className="text-sm text-primary mt-2">
-                                Total: ৳{pricing.totalPrice.toLocaleString()}{" "}
-                                for {selectedYears}{" "}
-                                {selectedYears === 1 ? "year" : "years"}
-                              </p>
-                            )}
+                            <p className="text-sm text-primary mt-2">
+                              Total: ৳{pricing.totalPrice.toLocaleString()} for{" "}
+                              {selectedYears}{" "}
+                              {selectedYears === 1 ? "year" : "years"}
+                            </p>
                           </div>
                         );
                       })()}
@@ -235,17 +230,14 @@ export function HostingPlans() {
                                     ৳{pricing.discountedMonthly}
                                   </span>
                                   <span className="text-muted-foreground">
-                                    /month
+                                    /Month
                                   </span>
                                 </div>
-                                {pricing.hasDiscount && (
-                                  <p className="text-sm text-primary mt-2">
-                                    Total: ৳
-                                    {pricing.totalPrice.toLocaleString()} for{" "}
-                                    {selectedYears}{" "}
-                                    {selectedYears === 1 ? "year" : "years"}
-                                  </p>
-                                )}
+                                <p className="text-sm font-semibold dark:text-primary mt-2">
+                                  Total: ৳{pricing.totalPrice.toLocaleString()}{" "}
+                                  For {selectedYears}{" "}
+                                  {selectedYears === 1 ? "Year" : "Years"}
+                                </p>
                               </div>
                             );
                           })()}
@@ -305,16 +297,14 @@ export function HostingPlans() {
                               ৳{pricing.discountedMonthly}
                             </span>
                             <span className="text-muted-foreground">
-                              /month
+                              /Month
                             </span>
                           </div>
-                          {pricing.hasDiscount && (
-                            <p className="text-sm text-primary mt-2">
-                              Total: ৳{pricing.totalPrice.toLocaleString()} for{" "}
-                              {selectedYears}{" "}
-                              {selectedYears === 1 ? "year" : "years"}
-                            </p>
-                          )}
+                          <p className="text-sm font-semibold dark:text-primary mt-2">
+                            Total: ৳{pricing.totalPrice.toLocaleString()} For{" "}
+                            {selectedYears}{" "}
+                            {selectedYears === 1 ? "Year" : "Years"}
+                          </p>
                         </div>
                       );
                     })()}

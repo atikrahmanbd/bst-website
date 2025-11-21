@@ -11,7 +11,7 @@ export function HomeMainContent() {
     [{ text: "হাই-পারফরম্যান্স" }, { text: "ওয়েব" }, { text: "হোস্টিং" }],
     [
       { text: "মাত্র" },
-      { text: "৳১৫০", className: "text-primary dark:text-primary" },
+      { text: "৳২৫০", className: "text-primary dark:text-primary" },
       { text: "টাকায়" },
       { text: "ওয়েব হোস্টিং" },
     ],
