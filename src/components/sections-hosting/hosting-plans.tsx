@@ -136,51 +136,86 @@ export function HostingPlans() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative"
+              className="relative h-full"
             >
-              <ElectricBorder
-                color={
-                  plan.name === "Starter"
-                    ? "#e85e00" // Orange
-                    : plan.name === "Professional"
-                    ? "#e7000b" // Red
-                    : "#00EFAE" // Cyan For Business
-                }
-                speed={
-                  plan.name === "Starter"
-                    ? 0.4 // Slower, Smoother Animation
-                    : plan.name === "Professional"
-                    ? 0.4 // Smooth, Calm Effect
-                    : 0.8 // Business - Slightly Faster
-                }
-                chaos={
-                  plan.name === "Starter"
-                    ? 0.2 // Very Smooth, Minimal Chaos
-                    : plan.name === "Professional"
-                    ? 0.2 // Very Smooth, Minimal Chaos
-                    : 0.3 // Business - Slightly More Movement
-                }
-                thickness={
-                  plan.name === "Starter"
-                    ? 3 // Standard Thickness
-                    : plan.name === "Professional"
-                    ? 3 // Same Thickness
-                    : 4 // Business - Thicker Border
-                }
-                style={{
-                  borderRadius: 16,
-                  overflow: "visible",
-                  position: "relative",
-                  zIndex: 20,
-                }}
-                className="h-full"
-              >
+              {plan.popular ? (
+                <ElectricBorder
+                  color="#00EFAE"
+                  speed={0.8}
+                  chaos={0.3}
+                  thickness={4}
+                  style={{
+                    borderRadius: 16,
+                    overflow: "visible",
+                    position: "relative",
+                    zIndex: 20,
+                  }}
+                  className="h-full"
+                >
+                  <div className="p-8 flex flex-col h-full rounded-2xl backdrop-blur-sm overflow-visible bg-primary/5 shadow-xl border border-white/5">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        {plan.description}
+                      </p>
+                      {(() => {
+                        const pricing = calculatePrice(plan.monthlyPrice);
+                        return (
+                          <div>
+                            <div className="flex items-baseline gap-2">
+                              {pricing.hasDiscount && (
+                                <span className="text-2xl font-semibold text-muted-foreground line-through">
+                                  ৳{pricing.originalMonthly}
+                                </span>
+                              )}
+                              <span className="text-4xl font-bold text-primary">
+                                ৳{pricing.discountedMonthly}
+                              </span>
+                              <span className="text-muted-foreground">
+                                /month
+                              </span>
+                            </div>
+                            {pricing.hasDiscount && (
+                              <p className="text-sm text-primary mt-2">
+                                Total: ৳{pricing.totalPrice.toLocaleString()}{" "}
+                                for {selectedYears}{" "}
+                                {selectedYears === 1 ? "year" : "years"}
+                              </p>
+                            )}
+                          </div>
+                        );
+                      })()}
+                    </div>
+
+                    <div className="flex-1 flex flex-col">
+                      <ul className="space-y-3 mb-8 flex-1">
+                        {plan.features.map((feature, i) => (
+                          <li key={i} className="flex items-start gap-3">
+                            <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                            <span className="text-sm">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <a href="/order" className="block w-full cursor-pointer">
+                      <BorderMagicButton
+                        className="w-full cursor-pointer"
+                        size="lg"
+                        shape="pill"
+                      >
+                        Get Started
+                      </BorderMagicButton>
+                    </a>
+                  </div>
+                </ElectricBorder>
+              ) : (
                 <div
-                  className={`p-8 flex flex-col h-full rounded-2xl backdrop-blur-sm overflow-visible ${
-                    plan.popular
-                      ? "bg-primary/5 shadow-xl border border-white/5"
-                      : "bg-card/80 border border-white/5"
-                  }`}
+                  className="p-8 flex flex-col h-full rounded-2xl bg-card/80 border-2 hover:border-dashed border-dotted transition-colors"
+                  style={{
+                    borderColor:
+                      plan.name === "Starter" ? "#334EFC" : "#e7000b",
+                  }}
                 >
                   <div className="mb-6">
                     <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
@@ -228,26 +263,16 @@ export function HostingPlans() {
                   </div>
 
                   <a href="/order" className="block w-full cursor-pointer">
-                    {plan.popular ? (
-                      <BorderMagicButton
-                        className="w-full cursor-pointer"
-                        size="lg"
-                        shape="pill"
-                      >
-                        Get Started
-                      </BorderMagicButton>
-                    ) : (
-                      <HoverBorderGradientButton
-                        className="w-full cursor-pointer"
-                        size="lg"
-                        shape="pill"
-                      >
-                        Get Started
-                      </HoverBorderGradientButton>
-                    )}
+                    <HoverBorderGradientButton
+                      className="w-full cursor-pointer"
+                      size="lg"
+                      shape="pill"
+                    >
+                      Get Started
+                    </HoverBorderGradientButton>
                   </a>
                 </div>
-              </ElectricBorder>
+              )}
             </motion.div>
           ))}
         </div>
