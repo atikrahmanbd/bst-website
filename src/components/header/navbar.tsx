@@ -398,7 +398,7 @@ export function Navbar() {
           <div className="flex items-center gap-3 md:hidden">
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="p-2 hover:bg-muted rounded-md transition-colors"
+              className="pl-0 p-2 hover:bg-muted rounded-md transition-colors"
               aria-label="Open Menu"
             >
               <TextAlignJustify className="h-6 w-6" />
