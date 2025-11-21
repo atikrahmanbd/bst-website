@@ -1,108 +1,198 @@
 "use client";
 
-import { motion } from "motion/react";
+import { GlassContainer } from "@/components/ui/glass-container";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 import {
   Server,
   Shield,
-  Zap,
+  AppWindow,
   HardDrive,
   Mail,
-  Database,
   Code,
-  Users,
   LifeBuoy,
+  Download,
+  ShieldCheck,
+  Gauge,
+  Rocket,
+  Rotate3D,
 } from "lucide-react";
 
 const features = [
   {
     icon: Server,
     title: "cPanel Control Panel",
-    description:
-      "Easy-To-Use cPanel Interface For Complete Website Management And Control",
+    description: "Industry-Standard Control Panel For Easy Website Management",
+    color: "blue",
   },
   {
     icon: Shield,
     title: "Free SSL Certificates",
     description:
       "Automatic SSL Installation And Renewal For Secure HTTPS Connection",
-  },
-  {
-    icon: Zap,
-    title: "SSD Storage",
-    description:
-      "Ultra-Fast SSD Drives For Lightning-Quick Website Loading Speeds",
+    color: "purple",
   },
   {
     icon: HardDrive,
+    title: "Pure NVMe Storage",
+    description:
+      "Ultra-Fast NVMe Drives Delivering Maximum Speed And Performance",
+    color: "green",
+  },
+  {
+    icon: Download,
     title: "Daily Backups",
     description:
       "Automated Daily Backups With Easy One-Click Restore From cPanel",
+    color: "sky",
+  },
+  {
+    icon: Gauge,
+    title: "Super Fast",
+    description:
+      "Lightning-Fast Loading Speeds With LiteSpeed And Advanced Caching",
+    color: "yellow",
+  },
+  {
+    icon: Rocket,
+    title: "LiteSpeed Cache",
+    description:
+      "Built-In LiteSpeed Cache Plugin For Exceptional WordPress Performance",
+    color: "emerald",
   },
   {
     icon: Mail,
-    title: "Professional Email",
+    title: "Clean Mail Server",
     description:
-      "Create Unlimited Professional Email Addresses With Your Domain Name",
+      "Properly Configured Mail Server With High Deliverability Rates",
+    color: "indigo",
   },
   {
-    icon: Database,
-    title: "MySQL Databases",
+    icon: ShieldCheck,
+    title: "Imunify360",
     description:
-      "Unlimited MySQL Databases For WordPress, Joomla, And Custom Applications",
+      "Advanced Security Suite Protecting Against Malware And Attacks",
+    color: "orange",
+  },
+  {
+    icon: AppWindow,
+    title: "Softaculous",
+    description:
+      "One-Click Installation For 400+ Applications Including WordPress",
+    color: "pink",
   },
   {
     icon: Code,
     title: "Developer Friendly",
     description: "Support For PHP, Python, Node.js, Git, SSH Access, And More",
+    color: "cyan",
   },
   {
-    icon: Users,
+    icon: Rotate3D,
     title: "Free Migration",
     description:
       "Professional Website Migration Service From Your Current Host To Ours",
+    color: "teal",
   },
   {
     icon: LifeBuoy,
-    title: "24/7 Support",
-    description: "Round-The-Clock Technical Support Via Email, Chat, And Phone",
+    title: "Reliable Support",
+    description:
+      "24/7 Technical Support Via Email And Live Chat Whenever Needed",
+    color: "red",
   },
 ];
 
 export function HostingFeatures() {
+  const colorClasses = {
+    blue: {
+      bg: "bg-blue-500/10 group-hover:bg-blue-500/20",
+      text: "text-blue-500",
+    },
+    purple: {
+      bg: "bg-purple-500/10 group-hover:bg-purple-500/20",
+      text: "text-purple-500",
+    },
+    green: {
+      bg: "bg-green-500/10 group-hover:bg-green-500/20",
+      text: "text-green-500",
+    },
+    sky: {
+      bg: "bg-sky-500/10 group-hover:bg-sky-500/20",
+      text: "text-sky-500",
+    },
+    yellow: {
+      bg: "bg-yellow-500/10 group-hover:bg-yellow-500/20",
+      text: "text-yellow-500",
+    },
+    emerald: {
+      bg: "bg-emerald-500/10 group-hover:bg-emerald-500/20",
+      text: "text-emerald-500",
+    },
+    indigo: {
+      bg: "bg-indigo-500/10 group-hover:bg-indigo-500/20",
+      text: "text-indigo-500",
+    },
+    orange: {
+      bg: "bg-orange-500/10 group-hover:bg-orange-500/20",
+      text: "text-orange-500",
+    },
+    pink: {
+      bg: "bg-pink-500/10 group-hover:bg-pink-500/20",
+      text: "text-pink-500",
+    },
+    cyan: {
+      bg: "bg-cyan-500/10 group-hover:bg-cyan-500/20",
+      text: "text-cyan-500",
+    },
+    teal: {
+      bg: "bg-teal-500/10 group-hover:bg-teal-500/20",
+      text: "text-teal-500",
+    },
+    red: {
+      bg: "bg-red-500/10 group-hover:bg-red-500/20",
+      text: "text-red-500",
+    },
+  };
+
   return (
-    <section className="relative py-12 sm:py-16 md:py-20 bg-black">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-8">
-        {/* Title */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="mb-4 text-2xl sm:text-3xl md:text-4xl font-bold">
+    <section className="relative w-full py-12 sm:py-16 md:py-20 bg-background overflow-hidden">
+      <div className="mx-auto max-w-7xl relative z-10">
+        {/* Title And Subheading */}
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 px-4">
+          <h2 className="mb-3 sm:mb-4 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-slate-700 dark:text-slate-300">
             Everything You Need To Succeed Online
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="px-4 mb-6 sm:mb-8 md:mb-12 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground md:text-xl leading-relaxed">
             Powerful Features And Tools Included With Every Hosting Plan
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="bg-card rounded-xl p-6 border border-border hover:border-primary/50 hover:shadow-lg transition-all"
-            >
-              <feature.icon
-                className="h-10 w-10 text-primary mb-4"
-                strokeWidth={1.5}
-              />
-              <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-              <p className="text-sm text-muted-foreground">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
+        <div className="grid gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4 text-center max-w-7xl mx-auto px-4 md:px-8">
+          {features.map((feature, index) => {
+            const colors =
+              colorClasses[feature.color as keyof typeof colorClasses];
+            return (
+              <GlassContainer key={index} className="group">
+                <GlowingEffect disabled={false} proximity={200} spread={30} />
+                <div className="p-3 sm:p-4">
+                  <div
+                    className={`mb-3 sm:mb-4 inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg ${colors.bg} transition-colors`}
+                  >
+                    <feature.icon
+                      className={`w-5 h-5 sm:w-6 sm:h-6 ${colors.text}`}
+                      strokeWidth={1.5}
+                    />
+                  </div>
+                  <h3 className="mb-1.5 sm:mb-2 text-lg font-semibold">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {feature.description}
+                  </p>
+                </div>
+              </GlassContainer>
+            );
+          })}
         </div>
       </div>
     </section>

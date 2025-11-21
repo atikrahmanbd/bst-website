@@ -3,20 +3,81 @@
 import { BackgroundDot } from "@/components/ui/background-dot";
 import GradientText from "@/components/ui/gradient-text";
 import { motion } from "motion/react";
-import { Server, Zap, Shield, Clock } from "lucide-react";
+import {
+  Zap,
+  ArrowRight,
+  ShieldCheck,
+  SquareActivity,
+  BadgeCheck,
+} from "lucide-react";
 import {
   BorderMagicButton,
   TailwindConnectButton,
 } from "@/components/ui/buttons";
 import { GlassContainer } from "@/components/ui/glass-container";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { CyclingTypewriterSmooth } from "@/components/ui/cycling-typewriter-smooth";
+
+const heroSentences = [
+  [
+    { text: "হাই-পারফরম্যান্স", className: "text-primary dark:text-primary" },
+    { text: "ওয়েব" },
+    { text: "হোস্টিং" },
+  ],
+  [
+    { text: "মাত্র" },
+    { text: "৳২৫০", className: "text-primary dark:text-primary" },
+    { text: "টাকায়" },
+    { text: "শুরু" },
+  ],
+  [
+    { text: "৯৯.৯%", className: "text-green-500 dark:text-green-500" },
+    { text: "আপটাইম", className: "text-primary dark:text-primary" },
+    { text: "গ্যারান্টি" },
+  ],
+  [
+    { text: "ফ্রি" },
+    { text: "SSL", className: "text-blue-500 dark:text-blue-500" },
+    { text: "সার্টিফিকেট" },
+  ],
+  [
+    { text: "আনলিমিটেড", className: "text-primary dark:text-primary" },
+    { text: "ব্যান্ডউইথ" },
+  ],
+  [
+    { text: "৪০০+", className: "text-primary dark:text-primary" },
+    { text: "ওয়ান-ক্লিক", className: "text-blue-500 dark:text-blue-500" },
+    { text: "অ্যাপ" },
+  ],
+  [
+    { text: "অরিজিনাল", className: "text-green-500 dark:text-green-500" },
+    {
+      text: "cPanel",
+      className: "text-orange-500 dark:text-orange-500",
+    },
+    { text: "লাইসেন্স" },
+  ],
+  [
+    { text: "অপরিবর্তিত", className: "text-primary dark:text-primary" },
+    { text: "রিনিউয়াল" },
+    { text: "মূল্য" },
+  ],
+];
 
 export function HostingHero() {
   const features = [
-    { icon: Zap, text: "Lightning Fast Performance", color: "yellow" },
-    { icon: Shield, text: "Free SSL Certificates", color: "purple" },
-    { icon: Clock, text: "99.9% Uptime Guarantee", color: "blue" },
-    { icon: Server, text: "cPanel Control Panel", color: "green" },
+    { icon: SquareActivity, text: "99.9% Uptime Guarantee", color: "blue" },
+    { icon: BadgeCheck, text: "Genuine cPanel License", color: "green" },
+    {
+      icon: ShieldCheck,
+      text: "Free Unlimited SSL Certificates",
+      color: "purple",
+    },
+    {
+      icon: Zap,
+      text: "Fast LiteSpeed Web Server",
+      color: "yellow",
+    },
   ];
 
   return (
@@ -33,16 +94,29 @@ export function HostingHero() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <h1 className="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold px-2">
-                <GradientText>Powerful Web Hosting</GradientText>
+                <GradientText>Hassle-Free Hosting Solutions</GradientText>
               </h1>
               <p className="mb-8 sm:mb-12 max-w-4xl mx-auto text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed px-4">
-                Fast, Secure, And Reliable Hosting Solutions For Your Website
+                Fast, Secure, and Reliable Hosting Solutions For Your
+                Website/Apps
               </p>
+
+              <CyclingTypewriterSmooth
+                sentences={heroSentences}
+                className="flex justify-center items-center pb-0 my-0 text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-bold text-slate-700 dark:text-slate-300 leading-relaxed px-2 mb-8 sm:mb-12"
+                cursorClassName="bg-primary"
+                typingDuration={800}
+                pauseDuration={2500}
+              />
 
               <div className="flex flex-wrap justify-center gap-4 mb-12">
                 <a href="#plans">
-                  <BorderMagicButton size="lg" shape="pill">
-                    View Plans
+                  <BorderMagicButton
+                    size="lg"
+                    shape="pill"
+                    className="shadow-2xl shadow-zinc-900"
+                  >
+                    View Plans <ArrowRight className="h-4 w-4 ml-2 -mr-2" />
                   </BorderMagicButton>
                 </a>
                 <a href="/contact">
@@ -55,7 +129,7 @@ export function HostingHero() {
           </div>
 
           {/* Features Grid */}
-          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
+          <div className="grid gap-6 grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
             {features.map((feature, index) => {
               const colorClasses = {
                 yellow: {
