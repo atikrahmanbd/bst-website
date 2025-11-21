@@ -5,7 +5,7 @@ import {
   type ClientLogo,
 } from "@/components/ui/infinite-scroll-clients";
 
-export function TrustedBrands() {
+export function CommonTrustedBrands() {
   const clients: ClientLogo[] = [
     {
       name: "Agro Grow",

@@ -10,7 +10,7 @@ import {
   TailwindConnectButton,
 } from "@/components/ui/buttons";
 
-export function HeroPortalPreview() {
+export function CommonPortalPreview() {
   return (
     <div className="relative mx-auto my-6 sm:my-8 md:my-10 flex max-w-7xl flex-col items-center justify-center">
       <div className="px-4 py-6 sm:py-8 md:py-12 lg:py-20">

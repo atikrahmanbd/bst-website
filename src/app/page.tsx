@@ -1,25 +1,25 @@
-import { HeroPortalPreview } from "@/components/sections/hero-portal-preview";
-import { HeroMainHome } from "@/components/sections/hero-main-home";
-import { ServicesOffered } from "@/components/sections/services-offered";
-import { AdditionalServices } from "@/components/sections/additional-services";
-import { WhyChooseUs } from "@/components/sections/why-choose-us";
-import { TestimonialsSection } from "@/components/sections/testimonials-section";
-import { TrustedBrands } from "@/components/sections/trusted-brands";
-import { FaqSection } from "@/components/sections/faq-section";
-import { WhatsNext } from "@/components/sections/whats-next";
+import { HomeMainHero } from "@/components/sections-home/home-main-hero";
+import { HomeServicesOffered } from "@/components/sections-home/home-services-offered";
+import { HomeAdditionalServices } from "@/components/sections-home/home-additional-services";
+import { HomeWhyChooseUs } from "@/components/sections-home/home-why-choose-us";
+import { HomeFaqSection } from "@/components/sections-home/home-faq-section";
+import { CommonPortalPreview } from "@/components/sections-common/common-portal-preview";
+import { CommonTestimonials } from "@/components/sections-common/common-testimonials";
+import { CommonTrustedBrands } from "@/components/sections-common/common-trusted-brands";
+import { CommonWhatsNext } from "@/components/sections-common/common-whats-next";
 
 export default function Home() {
   return (
     <>
-      <HeroMainHome />
-      <ServicesOffered />
-      <AdditionalServices />
-      <HeroPortalPreview />
-      <WhyChooseUs />
-      <TestimonialsSection />
-      <TrustedBrands />
-      <FaqSection />
-      <WhatsNext />
+      <HomeMainHero />
+      <HomeServicesOffered />
+      <HomeAdditionalServices />
+      <CommonPortalPreview />
+      <HomeWhyChooseUs />
+      <CommonTestimonials />
+      <CommonTrustedBrands />
+      <HomeFaqSection />
+      <CommonWhatsNext />
     </>
   );
 }

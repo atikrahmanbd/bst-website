@@ -5,7 +5,7 @@ import {
   DomainCard,
 } from "@/components/ui/infinite-scroll-domains";
 
-export function HeroDomainPricing() {
+export function CommonDomainScrollPricing() {
   const domains: DomainCard[] = [
     {
       extension: ".com",

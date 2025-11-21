@@ -3,7 +3,7 @@
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import GradientText from "../ui/gradient-text";
 
-export function TestimonialsSection() {
+export function CommonTestimonials() {
   const testimonials = [
     {
       quote:

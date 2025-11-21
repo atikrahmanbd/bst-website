@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import { EvervaultCard } from "@/components/ui/evervault-card";
-import { Globe, Cloud, MessageSquare } from "lucide-react";
+import { Globe, RefreshCw, LogIn } from "lucide-react";
 import React from "react";
 import GradientText from "../ui/gradient-text";
 
@@ -74,7 +74,7 @@ const Icon = ({ className, ...rest }: React.SVGProps<SVGSVGElement>) => {
   );
 };
 
-export function WhatsNext() {
+export function DomainWhatsNext() {
   return (
     <div className="relative pt-12 sm:pt-16 md:pt-20 pb-20 sm:pb-28 md:pb-40 px-4">
       <BackgroundBeams />
@@ -86,17 +86,18 @@ export function WhatsNext() {
             <GradientText>What&apos;s Next?</GradientText>
           </h2>
           <p className="px-4 mb-6 sm:mb-8 md:mb-12 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground md:text-xl leading-relaxed">
-            Explore Our Core Services Designed To Support Your Website, Growth,
-            And Digital Needs
+            Take The Next Step In Your Domain Journey With Our Quick Actions
           </p>
         </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 max-w-5xl mx-auto">
           <Card
-            title="Register Domain"
-            icon={<Globe className="h-10 w-10 sm:h-12 sm:w-12" strokeWidth={2} />}
-            description="Secure Your Ideal Domain Name With Instant Registration."
+            title="Register A Domain"
+            icon={
+              <Globe className="h-10 w-10 sm:h-12 sm:w-12" strokeWidth={2} />
+            }
+            description="Search and Register Your Perfect Domain Name With Instant Activation."
           >
             <CanvasRevealEffect
               animationSpeed={5.1}
@@ -105,16 +106,23 @@ export function WhatsNext() {
             />
           </Card>
           <Card
-            title="Buy Hosting"
-            icon={<Cloud className="h-10 w-10 sm:h-12 sm:w-12" strokeWidth={2} />}
-            description="Launch Your Website With Fast, Reliable, and Optimized Hosting."
+            title="Transfer Domain"
+            icon={
+              <RefreshCw
+                className="h-10 w-10 sm:h-12 sm:w-12"
+                strokeWidth={2}
+              />
+            }
+            description="Move Your Domain To B.S.T. With Ease For Better Management and Security."
           >
             <EvervaultCard text="" />
           </Card>
           <Card
-            title="Contact For Services"
-            icon={<MessageSquare className="h-10 w-10 sm:h-12 sm:w-12" strokeWidth={2} />}
-            description="Get Expert Help For Web, App, IT, and Custom Digital Solutions."
+            title="Manage Existing"
+            icon={
+              <LogIn className="h-10 w-10 sm:h-12 sm:w-12" strokeWidth={2} />
+            }
+            description="Login To Your Account To Manage DNS, Renewals, and Domain Settings."
           >
             <CanvasRevealEffect
               animationSpeed={5.1}

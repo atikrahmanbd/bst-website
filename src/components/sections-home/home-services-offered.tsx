@@ -13,9 +13,9 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { motion } from "motion/react";
 import { IconBrandWordpress } from "@tabler/icons-react";
 import GradientText from "../ui/gradient-text";
-import { OrbitalDomainIcons } from "@/components/sections/orbital-domain-icons";
+import { CommonOrbitalDomainIcons } from "@/components/sections-common/common-orbital-domain-icons";
 
-export function ServicesOffered() {
+export function HomeServicesOffered() {
   return (
     <section className="pt-10 sm:pt-16 md:pt-20 lg:py-32 relative overflow-hidden">
       <div className="max-w-7xl px-4 sm:px-6 md:px-8 mx-auto">
@@ -164,7 +164,7 @@ export function ServicesOffered() {
               </div>
 
               {/* Center icon with orbiting domain icons */}
-              <OrbitalDomainIcons />
+              <CommonOrbitalDomainIcons />
             </div>
           </div>
         </div>

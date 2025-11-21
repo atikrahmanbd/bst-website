@@ -3,7 +3,7 @@
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
-export function HeroDomainSearch() {
+export function CommonDomainSearch() {
   const placeholders = [
     "Search Domain Names...",
     "Check Availability...",

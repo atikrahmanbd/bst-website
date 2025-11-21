@@ -143,7 +143,7 @@ export const items = [
   },
 ];
 
-export function FaqSection() {
+export function HomeFaqSection() {
   return (
     <section className="relative py-12 sm:py-16 md:py-20 px-4">
       <div className="mx-auto w-full max-w-7xl">
@@ -174,14 +174,14 @@ export function FaqSection() {
                 <AccordionPrimitive.Header className="flex">
                   <AccordionPrimitive.Trigger
                     className={cn(
-                      "group focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-3 sm:gap-4 rounded-md px-3 sm:px-4 md:px-5 py-3 sm:py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50"
+                      "group focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-3 sm:gap-4 rounded-md px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-left text-base sm:text-lg font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50"
                     )}
                   >
                     <span className="flex items-center gap-2 sm:gap-3 md:gap-4">
-                      <item.icon className="size-4 shrink-0" />
+                      <item.icon className="size-5 sm:size-6 shrink-0" />
                       <span>{item.category}</span>
                     </span>
-                    <PlusIcon className="text-muted-foreground pointer-events-none size-4 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-45" />
+                    <PlusIcon className="text-muted-foreground pointer-events-none size-5 sm:size-6 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-45" />
                   </AccordionPrimitive.Trigger>
                 </AccordionPrimitive.Header>
                 <AccordionContent className="pb-0 pt-0">
@@ -193,7 +193,7 @@ export function FaqSection() {
                         className="bg-accent dark:bg-accent/50 px-3 sm:px-4 md:px-5 border-b last:border-b-0"
                       >
                         <AccordionPrimitive.Header className="flex data-[state=open]:border-b border-primary/50">
-                          <AccordionPrimitive.Trigger className="group text-left focus-visible:ring-ring/50 flex w-full items-center gap-2 sm:gap-3 md:gap-4 rounded-sm py-3 sm:py-4 text-sm sm:text-base font-medium outline-none focus-visible:z-10 focus-visible:ring-[3px] hover:no-underline">
+                          <AccordionPrimitive.Trigger className="group text-left focus-visible:ring-ring/50 flex w-full items-center gap-2 sm:gap-3 md:gap-4 rounded-sm py-3 sm:py-4 text-sm font-medium outline-none focus-visible:z-10 focus-visible:ring-[3px] hover:no-underline">
                             <ChevronDownIcon className="text-muted-foreground pointer-events-none size-4 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                             {faq.title}
                           </AccordionPrimitive.Trigger>

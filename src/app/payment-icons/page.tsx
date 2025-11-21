@@ -1,4 +1,4 @@
-import ShowcasePaymentIcons from "@/components/sections/showcase-payment-icons";
+import ShowcasePaymentIcons from "@/components/sections-extra/showcase-payment-icons";
 
 export default function ButtonsPage() {
   return (

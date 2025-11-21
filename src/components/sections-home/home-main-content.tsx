@@ -6,7 +6,7 @@ import GradientText from "@/components/ui/gradient-text";
 import { CyclingTypewriterSmooth } from "@/components/ui/cycling-typewriter-smooth";
 import { motion } from "motion/react";
 
-export function HeroMainContent() {
+export function HomeMainContent() {
   const heroSentences = [
     [{ text: "হাই-পারফরম্যান্স" }, { text: "ওয়েব" }, { text: "হোস্টিং" }],
     [
@@ -74,9 +74,9 @@ export function HeroMainContent() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <div className="relative z-10 mx-auto max-w-7xl text-center font-bold leading-tight">
-          <h2 className="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold px-2">
+          <h1 className="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold px-2">
             <GradientText>Fast & Secure Web Hosting</GradientText>
-          </h2>
+          </h1>
           <CyclingTypewriterSmooth
             sentences={heroSentences}
             className="flex justify-center items-center pb-0 my-0 text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-bold text-slate-700 dark:text-slate-300 leading-relaxed px-2"

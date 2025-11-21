@@ -169,7 +169,7 @@ const WebDesignHeader = () => (
   </div>
 );
 
-export function AdditionalServices() {
+export function HomeAdditionalServices() {
   const items = [
     {
       header: <SoftwareDevelopmentHeader />,

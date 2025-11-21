@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
-export function WhyChooseUs() {
+export function HomeWhyChooseUs() {
   return (
     <section className="relative w-full pt-0 pb-16 sm:pb-24 md:pb-32 lg:pb-40 bg-background overflow-hidden">
       <div className="mx-auto max-w-7xl relative z-10">

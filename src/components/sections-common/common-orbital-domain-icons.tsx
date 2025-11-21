@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-export function OrbitalDomainIcons() {
+export function CommonOrbitalDomainIcons() {
   return (
     <div className="flex-1 gap-2 flex items-center justify-center w-full h-full absolute inset-0 py-2 mt-16 sm:mt-20">
       {/* Fade Overlay - Top And Bottom (Only For Orbital System) */}
