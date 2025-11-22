@@ -141,41 +141,21 @@ export const SkeletonTwo = () => {
 
             {/* Chat Messages */}
             <div className="content mt-4 w-[90%] mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="message bg-neutral-100 dark:bg-neutral-800 dark:text-white text-black p-2 sm:p-4 text-[10px] sm:text-xs my-4 rounded-md"
-              >
+              <div className="message bg-neutral-100 dark:bg-neutral-800 dark:text-white text-black p-2 sm:p-4 text-[10px] sm:text-xs my-4 rounded-md animate-chat-message-1 opacity-0">
                 Need Help With My Hosting Setup
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="message bg-black text-white dark:bg-white dark:text-black p-2 sm:p-4 text-[10px] sm:text-xs my-4 rounded-md"
-              >
+              <div className="message bg-black/80 text-white dark:bg-white/80 dark:text-black p-2 sm:p-4 text-[10px] sm:text-xs my-4 rounded-md animate-chat-message-2 opacity-0">
                 I&apos;m Here To Help! What Do You Need Assistance With?
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="message bg-neutral-100 dark:bg-neutral-800 dark:text-white text-black p-2 sm:p-4 text-[10px] sm:text-xs my-4 rounded-md"
-              >
+              <div className="message bg-neutral-100 dark:bg-neutral-800 dark:text-white text-black p-2 sm:p-4 text-[10px] sm:text-xs my-4 rounded-md animate-chat-message-3 opacity-0">
                 How Do I Configure My Domain?
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="message bg-black text-white dark:bg-white dark:text-black p-2 sm:p-4 text-[10px] sm:text-xs my-4 rounded-md"
-              >
+              <div className="message bg-black/80 text-white dark:bg-white/80 dark:text-black p-2 sm:p-4 text-[10px] sm:text-xs my-4 rounded-md animate-chat-message-4 opacity-0">
                 Let Me Guide You Through The Process...
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>

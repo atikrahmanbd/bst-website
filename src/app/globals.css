@@ -41,7 +41,8 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
-  --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1 var(--delay, 0ms);
+  --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1
+    var(--delay, 0ms);
   --animate-move: move 8s linear infinite;
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -266,7 +267,6 @@
   }
 }
 
-
 @keyframes first {
   0% {
     transform: rotate(0deg);
@@ -424,4 +424,115 @@
 .animate-scroll {
   animation: scroll var(--animation-duration, 40s)
     var(--animation-direction, forwards) linear infinite;
+}
+
+@keyframes chatMessage1 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  3% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  91.4% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  92.9% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes chatMessage2 {
+  0%,
+  5% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  8% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90.7% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  92.1% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes chatMessage3 {
+  0%,
+  10% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  13% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  91.4% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes chatMessage4 {
+  0%,
+  15% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  18% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  89.3% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90.7% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.animate-chat-message-1 {
+  animation: chatMessage1 7s ease-in-out infinite;
+}
+
+.animate-chat-message-2 {
+  animation: chatMessage2 7s ease-in-out infinite;
+}
+
+.animate-chat-message-3 {
+  animation: chatMessage3 7s ease-in-out infinite;
+}
+
+.animate-chat-message-4 {
+  animation: chatMessage4 7s ease-in-out infinite;
 }
