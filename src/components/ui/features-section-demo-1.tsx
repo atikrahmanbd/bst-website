@@ -71,11 +71,11 @@ export const Grid = ({
   pattern,
   size,
 }: {
-  pattern?: number[][];
+  pattern?: [number, number][];
   size?: number;
 }) => {
   /* eslint-disable react-hooks/purity */
-  const defaultPattern = useMemo(() => [
+  const defaultPattern = useMemo((): [number, number][] => [
     [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
     [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
     [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
@@ -105,7 +105,7 @@ export function GridPattern({ width, height, x, y, squares, ...props }: {
   height: number;
   x: string;
   y: string;
-  squares?: number[][];
+  squares?: [number, number][];
   className?: string;
 }) {
   const patternId = useId();
