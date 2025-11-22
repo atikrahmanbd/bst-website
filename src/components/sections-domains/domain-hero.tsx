@@ -4,7 +4,7 @@ import { BackgroundDot } from "@/components/ui/background-dot";
 import GradientText from "@/components/ui/gradient-text";
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
-import { CommonOrbitalDomainIcons } from "@/components/sections-common/common-orbital-domain-icons";
+import { DomainOrbitalIcons } from "@/components/sections-domains/domain-orbital-icons";
 import { motion } from "motion/react";
 import { CircleCheckBig } from "lucide-react";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
@@ -51,9 +51,7 @@ export function DomainHero() {
 
       {/* Orbital Domain Icons - Bottom Half Only */}
       <div className="absolute -top-4/6 left-1/2 -translate-x-1/2 w-full max-w-2xl md:max-w-3xl lg:max-w-4xl aspect-square z-10">
-        <CommonOrbitalDomainIcons />
-        {/* Bottom Fade Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 sm:h-48 md:h-60 bg-gradient-to-t from-background to-transparent pointer-events-none z-20"></div>
+        <DomainOrbitalIcons />
       </div>
 
       <div className="relative z-20 flex items-center justify-center">
