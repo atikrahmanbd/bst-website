@@ -32,13 +32,13 @@ export function AboutFeaturesShowcase() {
   ];
 
   return (
-    <div className="relative z-20 py-10 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+    <div className="relative z-20 py-10 lg:py-20 max-w-7xl mx-auto sm:px-6 md:px-8">
       {/* Title And Subheading */}
       <div className="text-center mb-8 sm:mb-10 md:mb-12">
         <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-700 dark:text-slate-300 px-2">
           <GradientText>What Makes Us Different</GradientText>
         </h2>
-        <p className="px-4 mb-8 sm:mb-10 md:mb-12 max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed px-2">
+        <p className="px-4 mb-8 sm:mb-10 md:mb-12 max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
           From Cutting-Edge Technology To Exceptional Customer Service, We
           Deliver Excellence In Every Aspect Of Our Business.
         </p>
@@ -62,16 +62,16 @@ export function AboutFeaturesShowcase() {
 
 export const SkeletonOne = () => {
   return (
-    <div className="p-4 sm:p-8">
+    <div className="p-4 sm:p-6 md:p-8">
       <BackgroundDot backgroundColor="bg-background" fadeDirection="bottom" />
-      <p className="max-w-5xl mx-auto text-left tracking-tight text-foreground text-xl md:text-2xl md:leading-snug">
+      <p className="max-w-5xl mx-auto text-left tracking-tight text-foreground text-lg sm:text-xl md:text-2xl md:leading-snug">
         Easy & Modern Client Area
       </p>
-      <p className="text-sm md:text-base text-left text-muted-foreground font-normal max-w-lg mx-0 md:text-sm my-2">
+      <p className="text-sm md:text-base text-left text-muted-foreground font-normal max-w-lg mx-0 my-2">
         Manage Everything From A Single Place With Our Intuitive And Modern
         Client Portal.
       </p>
-      <div className="relative h-full w-full mt-4 sm:mt-8">
+      <div className="relative h-full w-full mt-4 sm:mt-6 md:mt-8 min-h-[200px] sm:min-h-[300px] md:min-h-0">
         <motion.div
           className="w-full h-full pt-2 mx-auto absolute inset-x-0 bottom-0 z-20"
           initial={{ opacity: 0, y: 100 }}
@@ -123,15 +123,15 @@ export const SkeletonOne = () => {
 
 export const SkeletonTwo = () => {
   return (
-    <div className="px-4 pt-4 sm:px-8 sm:pt-8">
-      <p className="max-w-5xl mx-auto text-left tracking-tight text-foreground text-xl md:text-2xl md:leading-snug">
+    <div className="px-4 pt-4 sm:px-6 sm:pt-6 md:px-8 md:pt-8">
+      <p className="max-w-5xl mx-auto text-left tracking-tight text-foreground text-lg sm:text-xl md:text-2xl md:leading-snug">
         Reliable Support
       </p>
-      <p className="text-sm md:text-base text-left text-muted-foreground font-normal max-w-sm mx-0 md:text-sm my-2">
+      <p className="text-sm md:text-base text-left text-muted-foreground font-normal max-w-sm mx-0 my-2">
         Our Dedicated Team Is Available Via Email And Live Chat To Help You
         Succeed.
       </p>
-      <div className="relative h-full w-full mt-8">
+      <div className="relative h-full w-full mt-6 sm:mt-8">
         <div className="absolute bottom-0 inset-x-0 h-15 bg-gradient-to-t from-background via-background to-transparent w-full pointer-events-none z-[11]" />
 
         <div className="p-4 border border-neutral-200 bg-neutral-100 dark:bg-neutral-800 dark:border-neutral-700 rounded-[32px] h-full z-20">
@@ -221,16 +221,16 @@ export const SkeletonThree = () => {
   };
 
   return (
-    <div className="p-4 sm:p-8">
-      <p className="max-w-5xl mx-auto text-left tracking-tight text-foreground text-xl md:text-2xl md:leading-snug">
+    <div className="p-4 sm:p-6 md:p-8">
+      <p className="max-w-5xl mx-auto text-left tracking-tight text-foreground text-lg sm:text-xl md:text-2xl md:leading-snug">
         Team of Diverse Expertise
       </p>
-      <p className="text-sm md:text-base text-left text-muted-foreground font-normal max-w-sm mx-0 md:text-sm my-2">
+      <p className="text-sm md:text-base text-left text-muted-foreground font-normal max-w-sm mx-0 my-2">
         Our Team Brings Together Diverse Skills And Expertise To Deliver
         Exceptional Solutions.
       </p>
-      <div className="relative flex flex-col items-start p-8 gap-10 h-full overflow-hidden">
-        <div className="flex flex-row -ml-20">
+      <div className="relative flex flex-col items-center sm:items-start p-4 sm:p-6 md:p-8 gap-6 sm:gap-10 h-full overflow-hidden">
+        <div className="flex flex-row -ml-4 sm:-ml-16 md:-ml-20">
           {teamMembers.map((member, idx) => (
             <motion.div
               variants={iconVariants}
@@ -240,9 +240,9 @@ export const SkeletonThree = () => {
               }}
               whileHover="whileHover"
               whileTap="whileTap"
-              className="rounded-xl -mr-4 mt-4 p-1 bg-card dark:border-neutral-700 border border-border shrink-0 overflow-hidden"
+              className="rounded-xl -mr-4 sm:-mr-4 mt-4 p-1 bg-card dark:border-neutral-700 border border-border shrink-0 overflow-hidden"
             >
-              <div className="rounded-lg h-20 w-20 md:h-40 md:w-40 overflow-hidden">
+              <div className="rounded-lg h-20 w-20 sm:h-24 sm:w-24 md:h-40 md:w-40 overflow-hidden">
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -255,8 +255,8 @@ export const SkeletonThree = () => {
           ))}
         </div>
 
-        <div className="absolute left-0 z-[100] inset-y-0 w-20 bg-gradient-to-r from-background to-transparent h-full pointer-events-none" />
-        <div className="absolute right-0 z-[100] inset-y-0 w-20 bg-gradient-to-l from-background to-transparent h-full pointer-events-none" />
+        <div className="hidden sm:block absolute left-0 z-[100] inset-y-0 w-16 md:w-20 bg-gradient-to-r from-background to-transparent h-full pointer-events-none" />
+        <div className="hidden sm:block absolute right-0 z-[100] inset-y-0 w-16 md:w-20 bg-gradient-to-l from-background to-transparent h-full pointer-events-none" />
       </div>
     </div>
   );
@@ -420,45 +420,47 @@ export const SkeletonFour = () => {
   return (
     <div className="relative h-full w-full">
       {/* Globe Background */}
-      <Globe className="absolute -right-20 md:-right-25 -bottom-80 md:-bottom-72 z-0" />
-      <div className="p-4 sm:p-8">
-        <p className="max-w-5xl mx-auto text-left tracking-tight text-foreground text-xl md:text-2xl md:leading-snug">
+      <Globe className="absolute -right-10 sm:-right-20 md:-right-30 -bottom-85 sm:-bottom-70 md:-bottom-50 z-0" />
+      <div className="p-4 sm:p-6 md:p-8">
+        <p className="max-w-5xl mx-auto text-left tracking-tight text-foreground text-lg sm:text-xl md:text-2xl md:leading-snug">
           Multi-Stack Solutions
         </p>
-        <p className="text-sm md:text-base text-left text-muted-foreground font-normal max-w-sm mx-0 md:text-sm my-2">
+        <p className="text-sm md:text-base text-left text-muted-foreground font-normal max-w-sm mx-0 my-2">
           We Deploy Your Vision With The Technology Stack That Best Fits Your
           Needs And Goals.
         </p>
       </div>
-      <div className="relative w-full py-12 flex flex-col justify-center gap-4 overflow-hidden">
+      <div className="relative w-full pt-20 py-12 flex flex-col justify-center gap-3 sm:gap-4 overflow-hidden">
         {/* Row 1 - Left To Right */}
         <div
           ref={row1Ref}
           className={cn(
-            "flex gap-4 w-max relative z-10",
+            "flex gap-2 sm:gap-3 md:gap-4 w-max relative z-10",
             startRow1 && "animate-scroll"
           )}
         >
           {techStack.map((tech, idx) => (
             <div
               key={`row1-${idx}`}
-              className="pl-2 pr-4 py-0.5 bg-card/50 border border-border rounded-lg shrink-0 flex items-center gap-2"
+              className="pl-1.5 pr-2 sm:pl-2 sm:pr-3 md:pr-4 py-0.5 bg-card/50 border border-border rounded-lg shrink-0 flex items-center gap-1.5 sm:gap-2"
             >
               <Image
                 src={tech.logo}
                 alt={tech.name}
-                width={36}
-                height={36}
-                className="dark:hidden"
+                width={28}
+                height={28}
+                className="dark:hidden w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9"
               />
               <Image
                 src={tech.logoDark}
                 alt={tech.name}
-                width={36}
-                height={36}
-                className="hidden dark:block"
+                width={28}
+                height={28}
+                className="hidden dark:block w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9"
               />
-              <span className="text-sm font-medium">{tech.name}</span>
+              <span className="text-xs sm:text-sm font-medium">
+                {tech.name}
+              </span>
             </div>
           ))}
         </div>
@@ -467,30 +469,32 @@ export const SkeletonFour = () => {
         <div
           ref={row2Ref}
           className={cn(
-            "flex gap-4 w-max relative z-10",
+            "flex gap-2 sm:gap-3 md:gap-4 w-max relative z-10",
             startRow2 && "animate-scroll"
           )}
         >
           {techStack.map((tech, idx) => (
             <div
               key={`row2-${idx}`}
-              className="pl-2 pr-4 py-0.5 bg-card/80 border border-border rounded-lg shrink-0 flex items-center gap-2"
+              className="pl-1.5 pr-2 sm:pl-2 sm:pr-3 md:pr-4 py-0.5 bg-card/80 border border-border rounded-lg shrink-0 flex items-center gap-1.5 sm:gap-2"
             >
               <Image
                 src={tech.logo}
                 alt={tech.name}
-                width={36}
-                height={36}
-                className="dark:hidden"
+                width={28}
+                height={28}
+                className="dark:hidden w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9"
               />
               <Image
                 src={tech.logoDark}
                 alt={tech.name}
-                width={36}
-                height={36}
-                className="hidden dark:block"
+                width={28}
+                height={28}
+                className="hidden dark:block w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9"
               />
-              <span className="text-sm font-medium">{tech.name}</span>
+              <span className="text-xs sm:text-sm font-medium">
+                {tech.name}
+              </span>
             </div>
           ))}
         </div>
@@ -499,37 +503,39 @@ export const SkeletonFour = () => {
         <div
           ref={row3Ref}
           className={cn(
-            "flex gap-4 w-max relative z-10",
+            "flex gap-2 sm:gap-3 md:gap-4 w-max relative z-10",
             startRow3 && "animate-scroll"
           )}
         >
           {techStack.map((tech, idx) => (
             <div
               key={`row3-${idx}`}
-              className="pl-2 pr-4 py-0.5 bg-card/50 border border-border rounded-lg shrink-0 flex items-center gap-2"
+              className="pl-1.5 pr-2 sm:pl-2 sm:pr-3 md:pr-4 py-0.5 bg-card/50 border border-border rounded-lg shrink-0 flex items-center gap-1.5 sm:gap-2"
             >
               <Image
                 src={tech.logo}
                 alt={tech.name}
-                width={36}
-                height={36}
-                className="dark:hidden"
+                width={28}
+                height={28}
+                className="dark:hidden w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9"
               />
               <Image
                 src={tech.logoDark}
                 alt={tech.name}
-                width={36}
-                height={36}
-                className="hidden dark:block"
+                width={28}
+                height={28}
+                className="hidden dark:block w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9"
               />
-              <span className="text-sm font-medium">{tech.name}</span>
+              <span className="text-xs sm:text-sm font-medium">
+                {tech.name}
+              </span>
             </div>
           ))}
         </div>
 
         {/* Gradient Overlays */}
-        <div className="absolute left-0 inset-y-0 w-20 bg-gradient-to-r from-background to-transparent pointer-events-none z-20" />
-        <div className="absolute right-0 inset-y-0 w-20 bg-gradient-to-l from-background to-transparent pointer-events-none z-20" />
+        <div className="absolute left-0 inset-y-0 w-12 sm:w-16 md:w-20 bg-gradient-to-r from-background to-transparent pointer-events-none z-20" />
+        {/* <div className="absolute right-0 inset-y-0 w-12 sm:w-16 md:w-20 bg-gradient-to-l from-background to-transparent pointer-events-none z-20" /> */}
       </div>
     </div>
   );
