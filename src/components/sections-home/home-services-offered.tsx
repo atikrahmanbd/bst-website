@@ -33,7 +33,7 @@ export function HomeServicesOffered() {
         {/* Grid With 2 Columns On Larger Screens */}
         <div className="grid grid-cols-1 md:grid-cols-2 pb-4 sm:pb-0 border-y border-border divide-y md:divide-y-0 md:divide-x divide-border">
           {/* Left Column - Web Hosting Services */}
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between overflow-hidden">
             <div className="py-4 px-2 sm:px-0 sm:p-6 md:p-8 text-center md:text-left">
               <Link
                 href="#"
@@ -47,7 +47,7 @@ export function HomeServicesOffered() {
                 Reliable Customer Support Tailored For Businesses of All Sizes
               </p>
             </div>
-            <div className="relative h-80 sm:h-60 flex flex-col md:h-90 pt-2 overflow-hidden">
+            <div className="relative h-80 sm:h-60 flex flex-col md:h-90 pt-2">
               {/* Placeholder For Visual Content */}
               <motion.div
                 className="w-full sm:max-w-[22rem] lg:max-w-sm mx-auto absolute inset-x-0 pb-0 px-2 sm:px-0"

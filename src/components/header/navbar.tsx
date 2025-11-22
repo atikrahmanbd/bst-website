@@ -147,7 +147,7 @@ export function Navbar() {
     },
     {
       label: "About Us",
-      href: "/about-us",
+      href: "/about",
       hasDropdown: false,
     },
     // {
@@ -211,7 +211,7 @@ export function Navbar() {
     {
       label: "About Us",
       ariaLabel: "About B.S.T.",
-      link: "/about-us",
+      link: "/about",
       icon: Building2,
     },
     {
