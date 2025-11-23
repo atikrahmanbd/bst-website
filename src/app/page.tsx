@@ -7,6 +7,8 @@ import { CommonPortalPreview } from "@/components/sections-common/common-portal-
 import { CommonTestimonials } from "@/components/sections-common/common-testimonials";
 import { CommonTrustedBrands } from "@/components/sections-common/common-trusted-brands";
 import { CommonWhatsNext } from "@/components/sections-common/common-whats-next";
+import { CommonFeaturesShowcase } from "@/components/sections-common/common-features-showcase";
+import { CommonBetterExperience } from "@/components/sections-common/common-better-experience";
 
 export default function Home() {
   return (
@@ -16,8 +18,10 @@ export default function Home() {
       <HomeAdditionalServices />
       <CommonPortalPreview />
       <HomeWhyChooseUs />
+      <CommonFeaturesShowcase />
       <CommonTestimonials />
       <CommonTrustedBrands />
+      <CommonBetterExperience />
       <HomeFaqSection />
       <CommonWhatsNext />
     </>

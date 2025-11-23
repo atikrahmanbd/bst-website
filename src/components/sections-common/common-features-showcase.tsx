@@ -10,7 +10,7 @@ import { BackgroundDot } from "@/components/ui/background-dot";
 import createGlobe from "cobe";
 import { useEffect, useRef, useCallback, useState } from "react";
 
-export function AboutFeaturesShowcase() {
+export function CommonFeaturesShowcase() {
   const features = [
     {
       skeleton: <SkeletonOne />,

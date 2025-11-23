@@ -1,6 +1,5 @@
 import { AboutHero } from "@/components/sections-about/about-hero";
-// import { AboutStory } from "@/components/sections-about/about-story";
-import { AboutFeaturesShowcase } from "@/components/sections-about/about-features-showcase";
+import { CommonFeaturesShowcase } from "@/components/sections-common/common-features-showcase";
 import { CommonBetterExperience } from "@/components/sections-common/common-better-experience";
 import { AboutWhyChoose } from "@/components/sections-about/about-why-choose";
 import { CommonTrustedBrands } from "@/components/sections-common/common-trusted-brands";
@@ -11,8 +10,7 @@ export default function AboutPage() {
   return (
     <>
       <AboutHero />
-      {/* <AboutStory /> */}
-      <AboutFeaturesShowcase />
+      <CommonFeaturesShowcase />
       <CommonBetterExperience />
       <AboutWhyChoose />
       <CommonTestimonials />
