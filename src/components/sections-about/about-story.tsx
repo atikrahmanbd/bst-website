@@ -36,7 +36,7 @@ export function AboutStory() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          <h2 className="mb-3 sm:mb-4 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">
+          <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
             <GradientText>Our Story</GradientText>
           </h2>
           <p className="max-w-3xl mx-auto text-base sm:text-lg text-muted-foreground leading-relaxed">

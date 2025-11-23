@@ -82,7 +82,7 @@ export function CommonWhatsNext() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         {/* Title And Subheading */}
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          <h2 className="mb-3 sm:mb-4 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-slate-700 dark:text-slate-300">
+          <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-700 dark:text-slate-300">
             <GradientText>What&apos;s Next?</GradientText>
           </h2>
           <p className="px-4 mb-6 sm:mb-8 md:mb-12 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground md:text-xl leading-relaxed">
@@ -95,7 +95,9 @@ export function CommonWhatsNext() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 max-w-5xl mx-auto">
           <Card
             title="Register Domain"
-            icon={<Globe className="h-10 w-10 sm:h-12 sm:w-12" strokeWidth={2} />}
+            icon={
+              <Globe className="h-10 w-10 sm:h-12 sm:w-12" strokeWidth={2} />
+            }
             description="Secure Your Ideal Domain Name With Instant Registration."
           >
             <CanvasRevealEffect
@@ -106,14 +108,21 @@ export function CommonWhatsNext() {
           </Card>
           <Card
             title="Buy Hosting"
-            icon={<Cloud className="h-10 w-10 sm:h-12 sm:w-12" strokeWidth={2} />}
+            icon={
+              <Cloud className="h-10 w-10 sm:h-12 sm:w-12" strokeWidth={2} />
+            }
             description="Launch Your Website With Fast, Reliable, and Optimized Hosting."
           >
             <EvervaultCard text="" />
           </Card>
           <Card
             title="Contact For Services"
-            icon={<MessageSquare className="h-10 w-10 sm:h-12 sm:w-12" strokeWidth={2} />}
+            icon={
+              <MessageSquare
+                className="h-10 w-10 sm:h-12 sm:w-12"
+                strokeWidth={2}
+              />
+            }
             description="Get Expert Help For Web, App, IT, and Custom Digital Solutions."
           >
             <CanvasRevealEffect

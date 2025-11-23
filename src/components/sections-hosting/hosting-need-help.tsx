@@ -27,7 +27,7 @@ export function HostingNeedHelp() {
             <div className="p-8 sm:p-10 md:p-12 text-center">
               {/* Heading */}
               <div className="mb-8">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+                <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-700 dark:text-slate-300">
                   <GradientText>Need Help With Your Hosting?</GradientText>
                 </h2>
                 <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">

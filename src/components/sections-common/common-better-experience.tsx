@@ -133,13 +133,13 @@ const PAYMENT_CARDS = [
   },
 ];
 
-export function AboutBetterExperience() {
+export function CommonBetterExperience() {
   return (
     <section className="py-16 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
             A Better Experience{" "}
             <GradientText>Built Around Your Needs</GradientText>
           </h2>
@@ -292,9 +292,12 @@ function ProjectCard() {
           <span className="bg-gradient-to-b from-primary/90 to-primary text-primary-foreground px-3 py-1 rounded text-sm font-medium">
             Available
           </span>
-          <h4 className="text-sm font-semibold mt-3 mb-1">Team Collaboration</h4>
+          <h4 className="text-sm font-semibold mt-3 mb-1">
+            Team Collaboration
+          </h4>
           <p className="text-muted-foreground text-xs">
-            Our Skilled Team Is Ready To Assist With Design, Development, And Technical Tasks.
+            Our Skilled Team Is Ready To Assist With Design, Development, And
+            Technical Tasks.
           </p>
         </div>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mt-5">

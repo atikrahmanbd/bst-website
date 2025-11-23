@@ -2,7 +2,7 @@ import { ContactHero } from "@/components/sections-contact/contact-hero";
 import { ContactForm } from "@/components/sections-contact/contact-form";
 import { ContactInfo } from "@/components/sections-contact/contact-info";
 import { CommonWhatsNext } from "@/components/sections-common/common-whats-next";
-import { AboutBetterExperience } from "@/components/sections-about/about-better-experience";
+import { CommonBetterExperience } from "@/components/sections-common/common-better-experience";
 
 export default function ContactPage() {
   return (
@@ -10,7 +10,7 @@ export default function ContactPage() {
       <ContactHero />
       <ContactForm />
       <ContactInfo />
-      <AboutBetterExperience />
+      <CommonBetterExperience />
       <CommonWhatsNext />
     </>
   );

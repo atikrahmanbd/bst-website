@@ -19,13 +19,15 @@ export function AboutWhyChoose() {
     {
       icon: ShieldCheck,
       title: "Trusted & Reliable",
-      description: "Years Of Proven Track Record Serving Businesses Across Bangladesh",
+      description:
+        "Years Of Proven Track Record Serving Businesses Across Bangladesh",
       color: "blue",
     },
     {
       icon: ThumbsUp,
       title: "Quality Service",
-      description: "Premium Services At Competitive Prices With No Hidden Costs",
+      description:
+        "Premium Services At Competitive Prices With No Hidden Costs",
       color: "green",
     },
     {
@@ -37,7 +39,8 @@ export function AboutWhyChoose() {
     {
       icon: Zap,
       title: "Fast & Efficient",
-      description: "Quick Setup And Lightning-Fast Performance For All Services",
+      description:
+        "Quick Setup And Lightning-Fast Performance For All Services",
       color: "yellow",
     },
     {
@@ -61,7 +64,8 @@ export function AboutWhyChoose() {
     {
       icon: Award,
       title: "Industry Leader",
-      description: "Recognized For Excellence In Technology And Service Quality",
+      description:
+        "Recognized For Excellence In Technology And Service Quality",
       color: "cyan",
     },
   ];
@@ -106,7 +110,7 @@ export function AboutWhyChoose() {
       <div className="mx-auto max-w-7xl relative z-10">
         {/* Title And Subheading */}
         <div className="text-center mb-8 sm:mb-10 md:mb-12 px-4">
-          <h2 className="mb-3 sm:mb-4 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">
+          <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
             <GradientText>Why Choose B.S.T.?</GradientText>
           </h2>
           <p className="px-4 mb-6 sm:mb-8 md:mb-12 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground md:text-xl leading-relaxed">
