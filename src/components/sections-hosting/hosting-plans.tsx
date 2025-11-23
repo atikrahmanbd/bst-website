@@ -68,9 +68,9 @@ export function HostingPlans() {
   const [selectedYears, setSelectedYears] = useState<1 | 2 | 3>(1);
 
   const yearOptions = [
-    { years: 1, label: "12 Months", discount: 0 },
-    { years: 2, label: "2 Years", discount: 10 },
-    { years: 3, label: "3 Years", discount: 20 },
+    { years: 1, label: "One Year", discount: 0 },
+    { years: 2, label: "Two Years", discount: 5 },
+    { years: 3, label: "Three Years", discount: 15 },
   ] as const;
 
   const calculatePrice = (monthlyPrice: number) => {
@@ -82,11 +82,13 @@ export function HostingPlans() {
     const totalPrice = monthlyPrice * totalMonths;
     const discountedPrice = totalPrice * (1 - discount / 100);
     const monthlyDiscounted = discountedPrice / totalMonths;
+    const savedAmount = totalPrice - discountedPrice;
 
     return {
       originalMonthly: monthlyPrice,
       discountedMonthly: Math.round(monthlyDiscounted),
       totalPrice: Math.round(discountedPrice),
+      savedAmount: Math.round(savedAmount),
       hasDiscount: discount > 0,
     };
   };
@@ -109,16 +111,24 @@ export function HostingPlans() {
               <button
                 key={option.years}
                 onClick={() => setSelectedYears(option.years)}
-                className={`px-6 py-3 rounded-full font-semibold text-sm transition-all ${
+                className={`px-4 py-3 rounded-full font-semibold text-sm transition-all flex items-center gap-2 ${
                   selectedYears === option.years
-                    ? "bg-primary text-primary-foreground shadow-lg"
+                    ? "bg-primary text-black shadow-lg"
                     : "bg-card border border-border hover:border-primary/50 text-foreground"
                 }`}
               >
-                {option.label}
-                {option.discount > 0 && (
-                  <span className="ml-2 text-xs">- {option.discount}% Off</span>
-                )}
+                <span>{option.label}</span>
+                {/* {option.discount > 0 && ( */}
+                <span
+                  className={`px-2 py-0.5 rounded-full text-sm font-bold ${
+                    selectedYears === option.years
+                      ? "bg-black/25 text-white dark:bg-primary-foreground/20 dark:text-primary-foreground"
+                      : "bg-primary/50 text-foreground dark:bg-primary/15 dark:text-primary"
+                  }`}
+                >
+                  {option.discount}% Off
+                </span>
+                {/* )} */}
               </button>
             ))}
           </div>
@@ -162,9 +172,16 @@ export function HostingPlans() {
                               </span>
                             </div>
                             <p className="text-sm text-primary mt-2">
-                              Total: ৳{pricing.totalPrice.toLocaleString()} for{" "}
+                              Total: ৳{pricing.totalPrice.toLocaleString()} For{" "}
                               {selectedYears}{" "}
-                              {selectedYears === 1 ? "year" : "years"}
+                              {selectedYears === 1 ? "Year" : "Years"}
+                              {pricing.hasDiscount && (
+                                <span className="text-green-600 dark:text-green-500">
+                                  {" "}
+                                  (৳{pricing.savedAmount.toLocaleString()}{" "}
+                                  Saved)
+                                </span>
+                              )}
                             </p>
                           </div>
                         );
@@ -237,6 +254,13 @@ export function HostingPlans() {
                                   Total: ৳{pricing.totalPrice.toLocaleString()}{" "}
                                   For {selectedYears}{" "}
                                   {selectedYears === 1 ? "Year" : "Years"}
+                                  {pricing.hasDiscount && (
+                                    <span className="text-green-600 dark:text-green-500">
+                                      {" "}
+                                      (৳{pricing.savedAmount.toLocaleString()}{" "}
+                                      Saved)
+                                    </span>
+                                  )}
                                 </p>
                               </div>
                             );
@@ -304,6 +328,12 @@ export function HostingPlans() {
                             Total: ৳{pricing.totalPrice.toLocaleString()} For{" "}
                             {selectedYears}{" "}
                             {selectedYears === 1 ? "Year" : "Years"}
+                            {pricing.hasDiscount && (
+                              <span className="text-green-600 dark:text-green-500">
+                                {" "}
+                                (৳{pricing.savedAmount.toLocaleString()} Saved)
+                              </span>
+                            )}
                           </p>
                         </div>
                       );

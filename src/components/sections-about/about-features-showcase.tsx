@@ -64,13 +64,15 @@ export const SkeletonOne = () => {
   return (
     <div className="p-4 sm:p-6 md:p-8">
       <BackgroundDot backgroundColor="bg-background" fadeDirection="bottom" />
-      <p className="max-w-5xl mx-auto text-left tracking-tight text-foreground text-lg sm:text-xl md:text-2xl md:leading-snug">
-        Easy & Modern Client Area
-      </p>
-      <p className="text-sm md:text-base text-left text-muted-foreground font-normal max-w-lg mx-0 my-2">
-        Manage Everything From A Single Place With Our Intuitive And Modern
-        Client Portal.
-      </p>
+      <div className="relative">
+        <p className="max-w-5xl mx-auto text-left tracking-tight text-foreground text-lg sm:text-xl md:text-2xl md:leading-snug">
+          Easy & Modern Client Area
+        </p>
+        <p className="text-sm md:text-base text-left text-muted-foreground font-normal max-w-lg mx-0 my-2">
+          Manage Everything From A Single Place With Our Intuitive And Modern
+          Client Portal.
+        </p>
+      </div>
       <div className="relative h-full w-full mt-4 sm:mt-6 md:mt-8 min-h-[200px] sm:min-h-[300px] md:min-h-0">
         <motion.div
           className="w-full h-full pt-2 mx-auto absolute inset-x-0 bottom-0 z-20"
