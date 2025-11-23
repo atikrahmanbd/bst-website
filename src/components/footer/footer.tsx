@@ -1,5 +1,9 @@
+"use client";
+
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import {
   Linkedin as LinkedinIcon,
   Twitter as TwitterIcon,
@@ -8,8 +12,18 @@ import {
 import { ThemeColorSwitch } from "@/components/theme-color-switch";
 import { Spotlight } from "@/components/ui/spotlight";
 import { PaymentMethods } from "@/components/footer/payment-methods";
+import { cn } from "@/lib/utils";
+
+const footerLinks = [
+  { href: "/about", label: "About Us" },
+  { href: "/contact", label: "Contact Us" },
+  { href: "/privacy-policy", label: "Privacy" },
+  { href: "/cookie-policy", label: "Cookie" },
+  { href: "/terms-and-conditions", label: "Terms & Conditions" },
+];
 
 export function Footer() {
+  const pathname = usePathname();
   return (
     <footer className="border-t border-border bg-background">
       {/* Let's Talk Section */}
@@ -123,47 +137,24 @@ export function Footer() {
 
           {/* Footer Links */}
           <div className="flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm">
-            <Link
-              href="/about"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              About Us
-            </Link>
-            <span className="text-primary">•</span>
-            <Link
-              href="/contact"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Contact Us
-            </Link>
-            <span className="text-primary">•</span>
-            <Link
-              href="/report-abuse"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Report Abuse
-            </Link>
-            <span className="text-primary">•</span>
-            <Link
-              href="/privacy"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Privacy
-            </Link>
-            <span className="text-primary">•</span>
-            <Link
-              href="/cookie"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Cookie
-            </Link>
-            <span className="text-primary">•</span>
-            <Link
-              href="/terms"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Terms & Conditions
-            </Link>
+            {footerLinks.map((link, index) => (
+              <React.Fragment key={link.href}>
+                <Link
+                  href={link.href}
+                  className={cn(
+                    "transition-colors",
+                    pathname === link.href
+                      ? "text-black dark:text-white font-medium"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {link.label}
+                </Link>
+                {index < footerLinks.length - 1 && (
+                  <span className="text-primary">•</span>
+                )}
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </div>
