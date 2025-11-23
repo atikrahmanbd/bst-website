@@ -15,7 +15,6 @@ import {
   Server,
   Palette,
   Code,
-  Smartphone,
   Settings,
   TrendingUp,
   Building2,
@@ -63,7 +62,7 @@ export function Navbar() {
       setDropdownPosition({
         top: rect.bottom - 1,
         left: rect.left,
-        width: 700,
+        width: 550,
       });
     }
   };
@@ -90,52 +89,27 @@ export function Navbar() {
       hasDropdown: true,
       dropdownSections: [
         {
-          title: "Web Design",
+          title: "Additional Services",
           items: [
             {
-              label: "Custom UI/UX Design",
-              href: "/services/web-design/ui-ux",
-              description: "Modern, User-Focused Interface Design",
+              label: "Web Design & Development",
+              href: "/web-design-and-development",
+              description: "Modern, Responsive Websites That Captivate Your Audience",
             },
             {
-              label: "WordPress Development",
-              href: "/services/web-design/wordpress",
-              description: "Powerful CMS-Based Websites",
-            },
-            {
-              label: "Shopify E-Commerce",
-              href: "/services/web-design/shopify",
-              description: "Complete Online Store Solutions",
-            },
-          ],
-        },
-        {
-          title: "Software & Apps",
-          items: [
-            {
-              label: "Software",
+              label: "Mobile App Development",
               href: "/services/software-development",
-              description: "Custom Software Solutions Tailored For You",
+              description: "Custom Mobile Applications From Concept To Deployment",
             },
-            {
-              label: "Mobile App",
-              href: "/services/mobile-apps",
-              description: "Native And Cross-Platform Mobile Apps",
-            },
-          ],
-        },
-        {
-          title: "IT & Marketing",
-          items: [
             {
               label: "IT & Custom Solutions",
               href: "/services/it-solutions",
-              description: "Cloud Infrastructure And Database Management",
+              description: "Tailored IT Infrastructure And Technology Solutions",
             },
             {
               label: "SEO & Marketing",
               href: "/services/seo-marketing",
-              description: "Boost Your Online Presence Strategically",
+              description: "Boost Your Online Presence With Strategic SEO",
             },
           ],
         },
@@ -172,18 +146,24 @@ export function Navbar() {
       link: "/web-hosting",
       icon: Server,
     },
-    {
-      label: "Web Design",
-      ariaLabel: "Web Design Services",
-      link: "/services/web-design",
-      icon: Palette,
-    },
   ];
 
   const moreServicesItems = [
     {
-      label: "IT Solutions",
-      ariaLabel: "IT Solutions",
+      label: "Web Design & Development",
+      ariaLabel: "Web Design And Development Services",
+      link: "/web-design-and-development",
+      icon: Palette,
+    },
+    {
+      label: "Mobile App Development",
+      ariaLabel: "Mobile App Development",
+      link: "/services/software-development",
+      icon: Code,
+    },
+    {
+      label: "IT & Custom Solutions",
+      ariaLabel: "IT And Custom Solutions",
       link: "/services/it-solutions",
       icon: Settings,
     },
@@ -192,18 +172,6 @@ export function Navbar() {
       ariaLabel: "SEO And Marketing",
       link: "/services/seo-marketing",
       icon: TrendingUp,
-    },
-    {
-      label: "Mobile Apps",
-      ariaLabel: "Mobile App Development",
-      link: "/services/mobile-apps",
-      icon: Smartphone,
-    },
-    {
-      label: "Software Development",
-      ariaLabel: "Software Development",
-      link: "/services/software-development",
-      icon: Code,
     },
   ];
 
@@ -540,16 +508,13 @@ export function Navbar() {
                       {/* Caret Arrow Pointing Up */}
                       <div className="absolute top-[8px] left-10 w-4 h-4 bg-background border-l border-t border-border rotate-45 transform"></div>
                       <GlassContainer>
-                        <div className="grid grid-cols-3 pb-4 divide-x divide-border">
+                        <div className="pb-4">
                           {item.dropdownSections?.map((section) => (
-                            <div
-                              key={section.title}
-                              className="px-4 first:pl-0 last:pr-0"
-                            >
-                              <h3 className="mb-2 px-3 text-xs font-semibold text-muted-foreground">
+                            <div key={section.title}>
+                              <h3 className="mb-3 px-3 text-xs font-semibold text-muted-foreground">
                                 {section.title}
                               </h3>
-                              <div className="space-y-1">
+                              <div className="grid grid-cols-2 gap-1">
                                 {section.items.map((dropdownItem) => (
                                   <Link
                                     key={dropdownItem.href}
