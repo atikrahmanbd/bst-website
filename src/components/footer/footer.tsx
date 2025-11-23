@@ -131,6 +131,13 @@ export function Footer() {
             </Link>
             <span className="text-primary">•</span>
             <Link
+              href="/contact"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Contact Us
+            </Link>
+            <span className="text-primary">•</span>
+            <Link
               href="/report-abuse"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >

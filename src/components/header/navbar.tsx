@@ -150,11 +150,11 @@ export function Navbar() {
       href: "/about",
       hasDropdown: false,
     },
-    // {
-    //   label: "Contact Us",
-    //   href: "/contact-us",
-    //   hasDropdown: false,
-    // },
+    {
+      label: "Contact Us",
+      href: "/contact",
+      hasDropdown: false,
+    },
   ];
 
   // Mobile menu items
