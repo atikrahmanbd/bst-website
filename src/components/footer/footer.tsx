@@ -17,6 +17,10 @@ import { cn } from "@/lib/utils";
 const footerLinks = [
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact Us" },
+  {
+    href: "https://my.bst.com.bd/submitticket.php",
+    label: "Report Abuse",
+  },
   { href: "/privacy-policy", label: "Privacy" },
   { href: "/cookie-policy", label: "Cookie" },
   { href: "/terms-and-conditions", label: "Terms & Conditions" },
