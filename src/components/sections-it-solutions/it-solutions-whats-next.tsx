@@ -9,7 +9,7 @@ import {
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import GradientText from "@/components/ui/gradient-text";
 
-export function MobileAppWhatsNext() {
+export function ItSolutionsWhatsNext() {
   return (
     <div className="relative pt-12 sm:pt-16 md:pt-20 pb-20 sm:pb-28 md:pb-40 px-4">
       <BackgroundBeams />
@@ -25,11 +25,10 @@ export function MobileAppWhatsNext() {
           {/* Heading */}
           <div className="mb-8">
             <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-700 dark:text-slate-300">
-              <GradientText>Ready To Build Your Mobile App?</GradientText>
+              <GradientText>Ready To Transform Your Business?</GradientText>
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Let&apos;s Discuss Your App Idea And Turn It Into Reality. Get In
-              Touch With Our Team Today!
+              Let&apos;s Discuss Your IT Challenges And Create Custom Solutions That Drive Results
             </p>
           </div>
 

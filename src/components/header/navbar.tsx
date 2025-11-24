@@ -94,17 +94,20 @@ export function Navbar() {
             {
               label: "Web Design & Development",
               href: "/web-design-and-development",
-              description: "Modern, Responsive Websites That Captivate Your Audience",
+              description:
+                "Modern, Responsive Websites That Captivate Your Audience",
             },
             {
               label: "Mobile App Development",
               href: "/mobile-app-development",
-              description: "Custom Mobile Applications From Concept To Deployment",
+              description:
+                "Custom Mobile Applications From Concept To Deployment",
             },
             {
               label: "IT & Custom Solutions",
-              href: "/services/it-solutions",
-              description: "Tailored IT Infrastructure And Technology Solutions",
+              href: "/it-and-custom-solutions",
+              description:
+                "Tailored IT Infrastructure And Technology Solutions",
             },
             {
               label: "SEO & Marketing",
@@ -115,8 +118,8 @@ export function Navbar() {
         },
       ],
       dropdownFooter: {
-        label: "View All Services",
-        href: "/services",
+        label: "Need A Different Solution? Contact Us",
+        href: "/contact",
       },
     },
     {
@@ -164,7 +167,7 @@ export function Navbar() {
     {
       label: "IT & Custom Solutions",
       ariaLabel: "IT And Custom Solutions",
-      link: "/services/it-solutions",
+      link: "/it-and-custom-solutions",
       icon: Settings,
     },
     {
