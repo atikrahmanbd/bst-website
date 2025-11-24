@@ -11,7 +11,7 @@ import {
 
 export function ContactHero() {
   return (
-    <div className="relative w-full overflow-hidden bg-background pt-20 sm:pt-28 md:pt-32 pb-4 sm:pb-8 md:pb-12">
+    <div className="relative w-full overflow-hidden bg-background pt-20 sm:pt-28 md:pt-32 pb-16">
       <BackgroundDot backgroundColor="bg-background" fadeDirection="bottom" />
 
       <div className="relative z-20 flex items-center justify-center">
