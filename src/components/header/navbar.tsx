@@ -98,7 +98,7 @@ export function Navbar() {
             },
             {
               label: "Mobile App Development",
-              href: "/services/software-development",
+              href: "/mobile-app-development",
               description: "Custom Mobile Applications From Concept To Deployment",
             },
             {
@@ -158,7 +158,7 @@ export function Navbar() {
     {
       label: "Mobile App Development",
       ariaLabel: "Mobile App Development",
-      link: "/services/software-development",
+      link: "/mobile-app-development",
       icon: Code,
     },
     {

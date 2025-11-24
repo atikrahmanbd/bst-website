@@ -4,23 +4,23 @@ import { motion } from "motion/react";
 import GradientText from "@/components/ui/gradient-text";
 import { GlassContainer } from "@/components/ui/glass-container";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
-import { Search, Pencil, Code2, Rocket } from "lucide-react";
+import { Lightbulb, Pencil, Code2, Rocket } from "lucide-react";
 import { BackgroundDot } from "../ui/background-dot";
 
 const processSteps = [
   {
     number: "1",
-    title: "Discovery",
+    title: "Ideation",
     description:
-      "We Start By Analyzing Your Goals, Audience, And Competitors To Build A Clear Strategic Direction.",
-    icon: Search,
+      "We Analyze Your App Concept, Target Users, And Market To Define Clear Goals And Requirements.",
+    icon: Lightbulb,
     color: "blue",
   },
   {
     number: "2",
-    title: "Prototype",
+    title: "Design",
     description:
-      "Our Designers Craft Wireframes And Prototypes That Align Every Detail With Your Brand Identity.",
+      "Creating Intuitive UI/UX Designs And Interactive Prototypes That Align With Platform Guidelines.",
     icon: Pencil,
     color: "purple",
   },
@@ -28,21 +28,21 @@ const processSteps = [
     number: "3",
     title: "Development",
     description:
-      "Clean, Efficient Code Built With Modern Technologies For Fast Performance And Easy Maintenance.",
+      "Building Robust Apps With Clean Code, Following Best Practices For Performance And Security.",
     icon: Code2,
     color: "green",
   },
   {
     number: "4",
-    title: "Launch & Support",
+    title: "Launch & Maintain",
     description:
-      "Thorough Testing, Deployment To Production, And Ongoing Support To Ensure Your Success.",
+      "Testing, App Store Submission, And Ongoing Updates To Keep Your App Running Smoothly.",
     icon: Rocket,
     color: "yellow",
   },
 ];
 
-export function WebDesignProcess() {
+export function MobileAppProcess() {
   return (
     <section className="relative py-12 sm:py-16 md:py-20 bg-background border-t border-border overflow-hidden">
       <BackgroundDot backgroundColor="bg-background" fadeDirection="bottom" />
@@ -50,10 +50,10 @@ export function WebDesignProcess() {
         {/* Title */}
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-700 dark:text-slate-300 px-2">
-            <GradientText>Our Design Process</GradientText>
+            <GradientText>Our Development Process</GradientText>
           </h2>
           <p className="px-4 mb-6 sm:mb-8 max-w-3xl mx-auto text-base sm:text-lg text-muted-foreground md:text-xl leading-relaxed">
-            A Proven Methodology That Delivers Results From Concept To Launch
+            A Streamlined Approach To Bring Your Mobile App From Concept To Market
           </p>
         </div>
 
