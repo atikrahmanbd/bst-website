@@ -62,7 +62,7 @@ export function Navbar() {
       setDropdownPosition({
         top: rect.bottom - 1,
         left: rect.left,
-        width: 550,
+        width: 650,
       });
     }
   };
@@ -111,7 +111,7 @@ export function Navbar() {
             },
             {
               label: "SEO & Marketing",
-              href: "/services/seo-marketing",
+              href: "/seo-and-marketing",
               description: "Boost Your Online Presence With Strategic SEO",
             },
           ],
@@ -153,7 +153,7 @@ export function Navbar() {
 
   const moreServicesItems = [
     {
-      label: "Web Design & Development",
+      label: "Web Design & Dev.",
       ariaLabel: "Web Design And Development Services",
       link: "/web-design-and-development",
       icon: Palette,
@@ -173,7 +173,7 @@ export function Navbar() {
     {
       label: "SEO & Marketing",
       ariaLabel: "SEO And Marketing",
-      link: "/services/seo-marketing",
+      link: "/seo-and-marketing",
       icon: TrendingUp,
     },
   ];

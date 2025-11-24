@@ -28,6 +28,7 @@ const services = [
     ],
     color: "blue",
     backgroundImage: "/tech-stack-logos/reactjs-dark.svg",
+    crossPlatform: true,
   },
   {
     icon: SiFlutter,
@@ -42,6 +43,7 @@ const services = [
     ],
     color: "purple",
     backgroundImage: "/tech-stack-logos/flutter-dark.svg",
+    crossPlatform: true,
   },
   {
     icon: Globe,
@@ -56,6 +58,7 @@ const services = [
     ],
     color: "yellow",
     backgroundImage: "/tech-stack-logos/nextjs-dark.svg",
+    crossPlatform: false,
   },
 ];
 
@@ -149,6 +152,15 @@ export function MobileAppServices() {
               >
                 <GlassContainer className="group h-full overflow-hidden relative">
                   <GlowingEffect disabled={false} proximity={200} spread={40} />
+
+                  {/* Cross-Platform Badge */}
+                  {service.crossPlatform && (
+                    <div
+                      className={`absolute top-4 right-4 z-10 ${colors.bg} ${colors.text} px-3 py-1.5 rounded-sm text-xs font-semibold shadow-lg`}
+                    >
+                      Cross-Platform
+                    </div>
+                  )}
 
                   {/* Background Logo */}
                   <div className="absolute -bottom-70 -right-80 w-[800px] h-[800px] opacity-[0.15] dark:opacity-[0.08] pointer-events-none">
