@@ -62,7 +62,7 @@ export function Navbar() {
       setDropdownPosition({
         top: rect.bottom - 1,
         left: rect.left,
-        width: 650,
+        width: 550,
       });
     }
   };
@@ -290,7 +290,7 @@ export function Navbar() {
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="mt-1 space-y-1 overflow-hidden border-l-2 border-border ml-[19px]"
+                            className="mt-1 space-y-2 overflow-hidden border-l-2 border-border ml-[19px]"
                           >
                             {moreServicesItems.map((item) => {
                               const Icon = item.icon;
@@ -517,7 +517,7 @@ export function Navbar() {
                               <h3 className="mb-3 px-3 text-xs font-semibold text-muted-foreground">
                                 {section.title}
                               </h3>
-                              <div className="grid grid-cols-2 gap-1">
+                              <div className="grid grid-cols-2 gap-2">
                                 {section.items.map((dropdownItem) => (
                                   <Link
                                     key={dropdownItem.href}

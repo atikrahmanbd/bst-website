@@ -321,7 +321,7 @@ export function SeoMarketingComparisonTable() {
   };
 
   return (
-    <section className="relative pb-12 sm:pb-16 md:pb-20 px-4">
+    <section className="relative pb-12 sm:pb-16 md:pb-20">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-8">
         {/* Title */}
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
