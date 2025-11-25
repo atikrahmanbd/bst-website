@@ -333,8 +333,8 @@ export const SkeletonFour = () => {
     },
     {
       name: "PostgreSQL",
-      logo: "/tech-stack-logos/postfresql-dark.svg",
-      logoDark: "/tech-stack-logos/postfresql-light.svg",
+      logo: "/tech-stack-logos/postgresql-dark.svg",
+      logoDark: "/tech-stack-logos/postgresql-light.svg",
     },
     {
       name: "Linux",
