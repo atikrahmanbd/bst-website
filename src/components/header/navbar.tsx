@@ -19,6 +19,7 @@ import {
   TrendingUp,
   Building2,
   Mail,
+  BookOpen,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GlassContainer } from "@/components/ui/glass-container";
@@ -123,14 +124,15 @@ export function Navbar() {
       },
     },
     {
-      label: "About Us",
-      href: "/about",
-      hasDropdown: false,
-    },
-    {
       label: "Contact Us",
       href: "/contact",
       hasDropdown: false,
+    },
+    {
+      label: "Guides",
+      href: "https://guides.bst.com.bd",
+      hasDropdown: false,
+      isExternal: true,
     },
   ];
 
@@ -179,6 +181,13 @@ export function Navbar() {
   ];
 
   const bottomMenuItems = [
+    {
+      label: "Guides",
+      ariaLabel: "Guides And Tutorials",
+      link: "https://guides.bst.com.bd",
+      icon: BookOpen,
+      isExternal: true,
+    },
     {
       label: "About Us",
       ariaLabel: "About B.S.T.",
@@ -321,18 +330,31 @@ export function Navbar() {
                       const Icon = item.icon;
                       return (
                         <li key={item.link}>
-                          <Link
-                            href={item.link}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
-                              pathname === item.link
-                                ? "bg-muted text-foreground"
-                                : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                            }`}
-                          >
-                            <Icon className="h-4 w-4 flex-shrink-0" />
-                            <span>{item.label}</span>
-                          </Link>
+                          {item.isExternal ? (
+                            <a
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => setMobileMenuOpen(false)}
+                              className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors text-muted-foreground hover:bg-muted hover:text-foreground"
+                            >
+                              <Icon className="h-4 w-4 flex-shrink-0" />
+                              <span>{item.label}</span>
+                            </a>
+                          ) : (
+                            <Link
+                              href={item.link}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
+                                pathname === item.link
+                                  ? "bg-muted text-foreground"
+                                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                              }`}
+                            >
+                              <Icon className="h-4 w-4 flex-shrink-0" />
+                              <span>{item.label}</span>
+                            </Link>
+                          )}
                         </li>
                       );
                     })}
@@ -342,7 +364,7 @@ export function Navbar() {
                 {/* Footer */}
                 <div className="p-4 border-t border-border space-y-3">
                   <Link
-                    href="/login"
+                    href="https://my.bst.com.bd/"
                     onClick={() => setMobileMenuOpen(false)}
                     className="block"
                   >
@@ -441,6 +463,15 @@ export function Navbar() {
                     {item.label}
                     <ChevronDown className="h-3 w-3" />
                   </button>
+                ) : item.isExternal ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-sm px-3 py-2 text-sm font-semibold transition-colors hover:text-foreground cursor-pointer text-muted-foreground"
+                  >
+                    {item.label}
+                  </a>
                 ) : (
                   <Link
                     href={item.href}
@@ -460,7 +491,7 @@ export function Navbar() {
           {/* Right Side Actions */}
           <div className="flex items-center gap-4 ml-auto md:ml-0">
             <ThemeSwitch />
-            <Link href="/login" className="hidden md:block">
+            <Link href="https://my.bst.com.bd" className="hidden md:block">
               <HoverBorderGradientButton
                 shape="pill"
                 size="sm"
@@ -470,7 +501,7 @@ export function Navbar() {
                 Login
               </HoverBorderGradientButton>
             </Link>
-            <Link href="/login" className="block md:hidden">
+            <Link href="https://my.bst.com.bd" className="block md:hidden">
               <HoverBorderGradientButton
                 shape="pill"
                 size="sm"

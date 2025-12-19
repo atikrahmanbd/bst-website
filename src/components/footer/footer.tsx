@@ -17,9 +17,11 @@ import { cn } from "@/lib/utils";
 const footerLinks = [
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact Us" },
+  { href: "https://guides.bst.com.bd", label: "Guides", isExternal: true },
   {
     href: "https://my.bst.com.bd/submitticket.php",
     label: "Report Abuse",
+    isExternal: true,
   },
   { href: "/privacy-policy", label: "Privacy" },
   { href: "/cookie-policy", label: "Cookie" },
@@ -54,7 +56,7 @@ export function Footer() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <p className="mb-1 text-xs sm:text-sm text-muted-foreground">
-                    WhatApp Us:
+                    WhatsApp Us:
                   </p>
                   <a
                     href="tel:+8801725414131"
@@ -143,17 +145,28 @@ export function Footer() {
           <div className="flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm">
             {footerLinks.map((link, index) => (
               <React.Fragment key={link.href}>
-                <Link
-                  href={link.href}
-                  className={cn(
-                    "transition-colors",
-                    pathname === link.href
-                      ? "text-black dark:text-white font-medium"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  {link.label}
-                </Link>
+                {link.isExternal ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors text-muted-foreground hover:text-foreground"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      "transition-colors",
+                      pathname === link.href
+                        ? "text-black dark:text-white font-medium"
+                        : "text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                )}
                 {index < footerLinks.length - 1 && (
                   <span className="text-primary">•</span>
                 )}
