@@ -468,8 +468,9 @@ export function Navbar() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-sm px-3 py-2 text-sm font-semibold transition-colors hover:text-foreground cursor-pointer text-muted-foreground"
+                    className="flex items-center gap-2 rounded-sm bg-primary/5 px-3 py-1.5 ring-1 ring-primary/15 text-sm font-semibold transition-colors hover:bg-primary/10 hover:ring-primary/30 cursor-pointer text-primary ml-2"
                   >
+                    <BookOpen className="h-4 w-4" />
                     {item.label}
                   </a>
                 ) : (
