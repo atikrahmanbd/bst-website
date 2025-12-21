@@ -1,6 +1,29 @@
 "use client";
 
-import { PlusIcon, Globe, Briefcase, Flag, Sparkles } from "lucide-react";
+import {
+  PlusIcon,
+  Globe,
+  Briefcase,
+  Flag,
+  Sparkles,
+  Palette,
+  MapPin,
+  Trophy,
+  Monitor,
+  Wrench,
+  Coins,
+  GraduationCap,
+  UtensilsCrossed,
+  Gamepad2,
+  ShoppingCart,
+  Home,
+  Laugh,
+  MoreHorizontal,
+  Flame,
+  Tag,
+  Zap,
+  Star,
+} from "lucide-react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import GradientText from "../ui/gradient-text";
 import {
@@ -12,13 +35,32 @@ import { cn } from "@/lib/utils";
 
 interface DomainPrice {
   tld: string;
+  tag?: string | null;
   register: string;
   transfer: string;
   renew: string;
-  grace: string;
+  grace?: string;
 }
 
-type IconName = "Globe" | "Briefcase" | "Flag" | "Sparkles";
+type IconName =
+  | "Globe"
+  | "Briefcase"
+  | "Flag"
+  | "Sparkles"
+  | "Palette"
+  | "MapPin"
+  | "Trophy"
+  | "Monitor"
+  | "Wrench"
+  | "Coins"
+  | "GraduationCap"
+  | "UtensilsCrossed"
+  | "Gamepad2"
+  | "ShoppingCart"
+  | "Home"
+  | "Laugh"
+  | "MoreHorizontal"
+  | "Star";
 
 interface PricingCategory {
   category: string;
@@ -31,7 +73,63 @@ const iconMap = {
   Briefcase,
   Flag,
   Sparkles,
+  Palette,
+  MapPin,
+  Trophy,
+  Monitor,
+  Wrench,
+  Coins,
+  GraduationCap,
+  UtensilsCrossed,
+  Gamepad2,
+  ShoppingCart,
+  Home,
+  Laugh,
+  MoreHorizontal,
+  Star,
 };
+
+// Tag Badge Component
+function TagBadge({ tag }: { tag: string }) {
+  const tagConfig: Record<
+    string,
+    { label: string; icon: React.ReactNode; className: string }
+  > = {
+    sale: {
+      label: "Sale",
+      icon: <Tag className="size-3" />,
+      className:
+        "bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-emerald-500/30",
+    },
+    hot: {
+      label: "Hot",
+      icon: <Flame className="size-3" />,
+      className:
+        "bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-orange-500/30",
+    },
+    new: {
+      label: "New",
+      icon: <Zap className="size-3" />,
+      className:
+        "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-blue-500/30",
+    },
+  };
+
+  const config = tagConfig[tag.toLowerCase()];
+  if (!config) return null;
+
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold shadow-md ml-2",
+        config.className
+      )}
+    >
+      {config.icon}
+      {config.label}
+    </span>
+  );
+}
 
 interface DomainPricingTableClientProps {
   pricingData: PricingCategory[];
@@ -112,9 +210,12 @@ export function DomainPricingTableClient({
                               className="border-b border-border/50 last:border-b-0 hover:bg-accent/20 transition-colors"
                             >
                               <td className="px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-lg sm:text-xl md:text-2xl font-bold bg-accent/5">
-                                <span className="text-primary">.</span>
-                                <span className="text-foreground">
-                                  {domain.tld.substring(1)}
+                                <span className="inline-flex items-center">
+                                  <span className="text-primary">.</span>
+                                  <span className="text-foreground">
+                                    {domain.tld.substring(1)}
+                                  </span>
+                                  {domain.tag && <TagBadge tag={domain.tag} />}
                                 </span>
                               </td>
                               <td className="px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-center text-base sm:text-lg text-muted-foreground border-l border-border/30 bg-accent/10">
@@ -127,7 +228,7 @@ export function DomainPricingTableClient({
                                 {domain.renew}
                               </td>
                               <td className="px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-center text-base sm:text-lg text-muted-foreground border-l border-border/30 bg-accent/25">
-                                {domain.grace}
+                                {domain.grace || "N/A"}
                               </td>
                             </tr>
                           ))}
