@@ -6,7 +6,14 @@ import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-van
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { DomainOrbitalIcons } from "@/components/sections-domains/domain-orbital-icons";
 import { motion } from "motion/react";
-import { CircleCheckBig, Flame, Tag, Zap } from "lucide-react";
+import {
+  CircleCheckBig,
+  Flame,
+  Tag,
+  Zap,
+  LayoutDashboard,
+  ArrowLeftRight,
+} from "lucide-react";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +25,7 @@ interface SpotlightDomain {
 
 interface DomainHeroClientProps {
   spotlightDomains: SpotlightDomain[];
+  totalDomains: number;
 }
 
 // Tag Badge Component For Domain Cards
@@ -59,11 +67,14 @@ function DomainTagBadge({ tag }: { tag: string }) {
   );
 }
 
-export function DomainHeroClient({ spotlightDomains }: DomainHeroClientProps) {
+export function DomainHeroClient({
+  spotlightDomains,
+  totalDomains,
+}: DomainHeroClientProps) {
   const placeholders = [
     "Search Domain Names...",
     "Check Availability...",
-    "550+ Domain Extensions...",
+    `${totalDomains}+ Domain Extensions...`,
     "Instant Purchase & Activation...",
     "Domain ID Protection...",
     "Start Building Your Web Presence...",
@@ -109,14 +120,42 @@ export function DomainHeroClient({ spotlightDomains }: DomainHeroClientProps) {
                 <GradientText>Find Your Perfect Domain</GradientText>
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-foreground max-w-xl mx-auto">
-                Search From 550+ Domain Extensions With Instant Activation And
-                Competitive Pricing
+                Search From{" "}
+                <span className="font-semibold text-primary">
+                  {totalDomains}+
+                </span>{" "}
+                Domain Extensions With Instant Activation and Competitive
+                Pricing
               </p>
+            </motion.div>
+
+            {/* Feature Pills */}
+            <motion.div
+              className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {[
+                { label: "Domain Control Panel", Icon: LayoutDashboard },
+                { label: "Easy Transfer", Icon: ArrowLeftRight },
+                { label: "Instant Activation", Icon: Zap },
+              ].map((feature, index) => (
+                <span
+                  key={index}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-border"
+                >
+                  <feature.Icon className="size-4 text-primary" />
+                  <span className="text-sm font-medium">
+                    <GradientText>{feature.label}</GradientText>
+                  </span>
+                </span>
+              ))}
             </motion.div>
 
             {/* Domain Search */}
             <div className="mb-8 sm:mb-12">
-              <div className="relative w-full max-w-xl mx-auto rounded-full">
+              <div className="relative w-full max-w-3xl mx-auto rounded-full">
                 <GlowingEffect
                   blur={0}
                   borderWidth={2}

@@ -366,7 +366,7 @@ export function PlaceholdersAndVanishInput({
   return (
     <form
       className={cn(
-        "w-full relative max-w-xl mx-auto rounded-full transition duration-200 p-2.5",
+        "w-full relative rounded-full transition duration-200 p-2.5",
         "bg-white/30 dark:bg-black/20 backdrop-blur-lg",
         "border border-border shadow-2xl",
         value && "bg-white/30 dark:bg-black/40"

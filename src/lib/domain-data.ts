@@ -1,5 +1,3 @@
-import { DomainHeroClient } from "./domain-hero-client";
-
 interface DomainPriceData {
   tld: string;
   category?: string;
@@ -17,7 +15,7 @@ interface DomainPricingResponse {
   domains: DomainPriceData[];
 }
 
-// Extended Fallback TLD List (More Than 6 To Handle Edge Cases)
+// Extended Fallback TLD List
 const FALLBACK_TLDS = [
   ".com",
   ".net",
@@ -45,12 +43,13 @@ const DEFAULT_FALLBACK_PRICES: Record<string, string> = {
   ".info": "৳1,500",
 };
 
-interface FetchResult {
+export interface DomainDataResult {
   spotlightDomains: { extension: string; price: string; tag?: string | null }[];
   totalDomains: number;
+  allDomains: DomainPriceData[];
 }
 
-async function fetchSpotlightDomains(): Promise<FetchResult> {
+export async function fetchDomainData(): Promise<DomainDataResult> {
   try {
     const externalJsonUrl =
       process.env.NEXT_PUBLIC_DOMAIN_PRICING_URL ||
@@ -92,6 +91,7 @@ async function fetchSpotlightDomains(): Promise<FetchResult> {
       return {
         spotlightDomains: spotlightDomainsFromApi,
         totalDomains: allDomains.length,
+        allDomains,
       };
     }
 
@@ -110,7 +110,8 @@ async function fetchSpotlightDomains(): Promise<FetchResult> {
 
       // Get Price From JSON Or Use Default
       const domainInfo = domainPriceMap.get(fallbackTld.toLowerCase());
-      const price = domainInfo?.register || DEFAULT_FALLBACK_PRICES[fallbackTld] || "N/A";
+      const price =
+        domainInfo?.register || DEFAULT_FALLBACK_PRICES[fallbackTld] || "N/A";
       const tag = domainInfo?.tag || null;
 
       result.push({
@@ -123,9 +124,10 @@ async function fetchSpotlightDomains(): Promise<FetchResult> {
     return {
       spotlightDomains: result,
       totalDomains: allDomains.length,
+      allDomains,
     };
   } catch (error) {
-    console.error("Error Fetching Spotlight Domains:", error);
+    console.error("Error Fetching Domain Data:", error);
 
     // Complete Fallback - Use Default Prices
     return {
@@ -135,17 +137,18 @@ async function fetchSpotlightDomains(): Promise<FetchResult> {
         tag: null,
       })),
       totalDomains: 550, // Fallback Count
+      allDomains: [],
     };
   }
 }
 
-export async function DomainHero() {
-  const { spotlightDomains, totalDomains } = await fetchSpotlightDomains();
-
-  return (
-    <DomainHeroClient
-      spotlightDomains={spotlightDomains}
-      totalDomains={totalDomains}
-    />
+// Get Price For A Specific TLD From All Domains
+export function getDomainPrice(
+  allDomains: DomainPriceData[],
+  tld: string
+): string | null {
+  const domain = allDomains.find(
+    (d) => d.tld.toLowerCase() === tld.toLowerCase()
   );
+  return domain?.register || null;
 }

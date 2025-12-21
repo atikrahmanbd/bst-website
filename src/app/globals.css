@@ -270,6 +270,41 @@
   }
 }
 
+/* Gradient Background: Vivid Blue To Aqua Green */
+.bg-gradient-blue-aqua {
+  background: linear-gradient(135deg, #4079ff 0%, #00efae 100%);
+}
+
+/* Gradient Text: Vivid Blue To Aqua Green */
+.text-gradient-blue-aqua {
+  background: linear-gradient(135deg, #4079ff 0%, #00efae 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Gradient Icon Wrapper: Vivid Blue To Aqua Green */
+.icon-gradient-blue-aqua {
+  display: inline-flex;
+  background: linear-gradient(135deg, #4079ff 0%, #00efae 100%);
+  -webkit-mask: var(--icon-mask);
+  mask: var(--icon-mask);
+}
+
+.icon-gradient-blue-aqua svg {
+  color: transparent;
+  background: linear-gradient(135deg, #4079ff 0%, #00efae 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+/* SVG Gradient Fill */
+.svg-gradient-blue-aqua {
+  fill: url(#gradient-blue-aqua);
+  stroke: url(#gradient-blue-aqua);
+}
+
 @keyframes first {
   0% {
     transform: rotate(0deg);
