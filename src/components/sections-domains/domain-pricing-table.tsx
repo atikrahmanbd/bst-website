@@ -28,7 +28,8 @@ type IconName =
   | "Home"
   | "Laugh"
   | "MoreHorizontal"
-  | "Star";
+  | "Star"
+  | "Tag";
 
 interface PricingCategory {
   category: string;
@@ -39,6 +40,7 @@ interface PricingCategory {
 // Map WHMCS Categories To Icons
 const categoryIconMap: Record<string, IconName> = {
   "Spotlight": "Star",
+  "Sale": "Tag",
   "Popular": "Globe",
   "Business": "Briefcase",
   "Geographic": "MapPin",
@@ -162,14 +164,22 @@ interface DomainPricingResponse {
   lastUpdated: string;
   currency: string;
   spotlightTlds: DomainPrice[];
+  saleTlds: DomainPrice[];
   domains: DomainPrice[];
 }
 
-async function fetchDomainPricing(): Promise<PricingCategory[]> {
+interface FetchResult {
+  pricingData: PricingCategory[];
+  lastUpdated: string | null;
+}
+
+async function fetchDomainPricing(): Promise<FetchResult> {
   try {
     // Try To Fetch From External JSON URL First
     let allDomains: DomainPrice[] = [];
     let spotlightTlds: DomainPrice[] = [];
+    let saleTlds: DomainPrice[] = [];
+    let lastUpdated: string | null = null;
 
     try {
       const externalJsonUrl =
@@ -186,6 +196,8 @@ async function fetchDomainPricing(): Promise<PricingCategory[]> {
       const data: DomainPricingResponse = await response.json();
       allDomains = Array.isArray(data) ? data : data.domains || [];
       spotlightTlds = data.spotlightTlds || [];
+      saleTlds = data.saleTlds || [];
+      lastUpdated = data.lastUpdated || null;
     } catch (err) {
       console.error("Error Fetching Domain Pricing:", err);
       // Will Use Hardcoded Fallback Data Below
@@ -226,11 +238,22 @@ async function fetchDomainPricing(): Promise<PricingCategory[]> {
     const pricingData: PricingCategory[] = [];
 
     // Add Spotlight Category First If We Have At Least 1 Spotlight TLD
+    // Keep Original Order From Backend (No Sorting)
     if (spotlightTlds.length > 0) {
       pricingData.push({
         category: "Spotlight",
         iconName: "Star",
-        domains: spotlightTlds.sort((a, b) => a.tld.localeCompare(b.tld)),
+        domains: spotlightTlds,
+      });
+    }
+
+    // Add Sale Category Second If We Have At Least 1 Sale TLD
+    // Keep Original Order From Backend (No Sorting)
+    if (saleTlds.length > 0) {
+      pricingData.push({
+        category: "Sale",
+        iconName: "Tag",
+        domains: saleTlds,
       });
     }
 
@@ -263,15 +286,23 @@ async function fetchDomainPricing(): Promise<PricingCategory[]> {
       }
     });
 
-    return pricingData.length > 0 ? pricingData : fallbackData;
+    return {
+      pricingData: pricingData.length > 0 ? pricingData : fallbackData,
+      lastUpdated,
+    };
   } catch (error) {
     console.error("Error Fetching Domain Pricing:", error);
-    return fallbackData;
+    return { pricingData: fallbackData, lastUpdated: null };
   }
 }
 
 export async function DomainPricingTable() {
-  const pricingData = await fetchDomainPricing();
+  const { pricingData, lastUpdated } = await fetchDomainPricing();
 
-  return <DomainPricingTableClient pricingData={pricingData} />;
+  return (
+    <DomainPricingTableClient
+      pricingData={pricingData}
+      lastUpdated={lastUpdated}
+    />
+  );
 }

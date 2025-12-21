@@ -7,7 +7,7 @@ export function CommonDomainSearch() {
   const placeholders = [
     "Search Domain Names...",
     "Check Availability...",
-    "400+ Domain Extensions...",
+    "550+ Domain Extensions...",
     "Instant Purchase & Activation...",
     "Domain ID Protection...",
     "Start Building Your Web Presence...",

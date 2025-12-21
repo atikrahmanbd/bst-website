@@ -154,7 +154,7 @@ export function HomeServicesOffered() {
                   href="#"
                   className="group inline-flex items-center gap-2 text-lg sm:text-xl md:text-2xl font-bold text-foreground hover:text-primary transition-colors"
                 >
-                  <span className="sm:inline">Domains - 400+ Extensions</span>
+                  <span className="sm:inline">Domains - 550+ Extensions</span>
                   <ArrowRight className="size-5 sm:size-6 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                 </Link>
                 <p className="text-muted-foreground font-normal mt-2 text-sm sm:text-base">
@@ -192,7 +192,7 @@ export function HomeServicesOffered() {
             </div>
             <p className="text-muted-foreground text-sm sm:text-base mt-2">
               Register and Activate Your Domain Instantly With Access To Over
-              400+ Extensions.
+              550+ Extensions.
             </p>
           </div>
           <div className="sm:col-span-2 md:col-span-1 text-center md:text-left">

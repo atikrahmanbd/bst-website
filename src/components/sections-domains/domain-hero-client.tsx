@@ -63,7 +63,7 @@ export function DomainHeroClient({ spotlightDomains }: DomainHeroClientProps) {
   const placeholders = [
     "Search Domain Names...",
     "Check Availability...",
-    "400+ Domain Extensions...",
+    "550+ Domain Extensions...",
     "Instant Purchase & Activation...",
     "Domain ID Protection...",
     "Start Building Your Web Presence...",
@@ -109,7 +109,7 @@ export function DomainHeroClient({ spotlightDomains }: DomainHeroClientProps) {
                 <GradientText>Find Your Perfect Domain</GradientText>
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-foreground max-w-xl mx-auto">
-                Search From 400+ Domain Extensions With Instant Activation And
+                Search From 550+ Domain Extensions With Instant Activation And
                 Competitive Pricing
               </p>
             </motion.div>
