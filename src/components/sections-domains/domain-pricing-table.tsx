@@ -4,6 +4,7 @@ interface DomainPrice {
   tld: string;
   category?: string;
   tag?: string | null;
+  period?: number; // 1 = Per Year, 2 = Per 2 Years
   register: string;
   transfer: string;
   renew: string;

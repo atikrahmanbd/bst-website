@@ -38,6 +38,7 @@ import { cn } from "@/lib/utils";
 interface DomainPrice {
   tld: string;
   tag?: string | null;
+  period?: number; // 1 = Per Year, 2 = Per 2 Years
   register: string;
   transfer: string;
   renew: string;
@@ -92,6 +93,16 @@ const iconMap = {
   Star,
   Tag,
 };
+
+// Period Badge Component (For 2-Year TLDs)
+function PeriodBadge({ period }: { period: number }) {
+  if (period !== 2) return null;
+  return (
+    <span className="text-xs text-muted-foreground font-normal ml-1">
+      /2yr
+    </span>
+  );
+}
 
 // Tag Badge Component
 function TagBadge({ tag }: { tag: string }) {
@@ -292,12 +303,15 @@ export function DomainPricingTableClient({
                             </td>
                             <td className="px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-center text-base sm:text-lg text-muted-foreground border-l border-border/30 bg-accent/10">
                               {domain.register}
+                              <PeriodBadge period={domain.period || 1} />
                             </td>
                             <td className="px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-center text-base sm:text-lg text-muted-foreground border-l border-border/30 bg-accent/15">
                               {domain.transfer}
+                              <PeriodBadge period={domain.period || 1} />
                             </td>
                             <td className="px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-center text-base sm:text-lg text-muted-foreground border-l border-border/30 bg-accent/20">
                               {domain.renew}
+                              <PeriodBadge period={domain.period || 1} />
                             </td>
                             <td className="px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-center text-base sm:text-lg text-muted-foreground border-l border-border/30 bg-accent/25">
                               {domain.grace || "N/A"}
@@ -377,12 +391,15 @@ export function DomainPricingTableClient({
                               </td>
                               <td className="px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-center text-base sm:text-lg text-muted-foreground border-l border-border/30 bg-accent/10">
                                 {domain.register}
+                                <PeriodBadge period={domain.period || 1} />
                               </td>
                               <td className="px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-center text-base sm:text-lg text-muted-foreground border-l border-border/30 bg-accent/15">
                                 {domain.transfer}
+                                <PeriodBadge period={domain.period || 1} />
                               </td>
                               <td className="px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-center text-base sm:text-lg text-muted-foreground border-l border-border/30 bg-accent/20">
                                 {domain.renew}
+                                <PeriodBadge period={domain.period || 1} />
                               </td>
                             </tr>
                           ))}
