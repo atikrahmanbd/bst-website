@@ -196,21 +196,31 @@ function DomainResultRow({ result, index, onAddToCart }: DomainResultRowProps) {
           <div className="flex items-center gap-2">
             <p
               className={cn(
-                "font-semibold truncate text-left",
+                "text-sm sm:text-base font-semibold truncate text-left",
                 isAvailable ? "text-foreground" : "text-muted-foreground"
               )}
             >
               {result.domain}
             </p>
-            {/* Premium Tag */}
+            {/* Premium Tag - Beside Domain On Desktop */}
             {isPremium && isAvailable && (
-              <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-medium bg-amber-500/20 text-amber-600 dark:text-amber-400 shrink-0">
+              <span className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-medium bg-amber-500/20 text-amber-600 dark:text-amber-400 shrink-0">
                 <Crown className="size-3" />
                 Premium
               </span>
             )}
           </div>
-          <p className="text-xs text-muted-foreground text-left">
+          {/* Premium Tag - Below Domain On Mobile */}
+          {isPremium && isAvailable && (
+            <span className="sm:hidden inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-medium bg-amber-500/20 text-amber-600 dark:text-amber-400 mt-0.5">
+              <Crown className="size-3" />
+              Premium
+            </span>
+          )}
+          <p className={cn(
+            "text-xs text-muted-foreground text-left mt-0.5",
+            isPremium && isAvailable && "hidden sm:block"
+          )}>
             {isAvailable
               ? isPremium
                 ? "Premium Domain Available"
@@ -221,11 +231,11 @@ function DomainResultRow({ result, index, onAddToCart }: DomainResultRowProps) {
       </div>
 
       {/* Right Side: Price And Action */}
-      <div className="flex items-center gap-3 shrink-0">
+      <div className="flex items-center gap-2 sm:gap-3 shrink-0">
         {/* Price */}
         {isAvailable && price && (
           <div className="text-right">
-            <p className="font-bold text-primary">{price}</p>
+            <p className="text-sm sm:text-base font-bold text-primary">{price}</p>
             <p className="text-xs text-muted-foreground">{periodLabel}</p>
           </div>
         )}
