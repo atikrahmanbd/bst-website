@@ -9,10 +9,12 @@ export interface DomainCheckResult {
   available: boolean;
   status: string;
   premium?: boolean;
+  period?: number; // 1 = Per Year, 2 = Per 2 Years
   pricing: {
     register: string | null;
     transfer: string | null;
     renew: string | null;
+    period?: number;
   } | null;
   premiumPricing?: {
     register: string;

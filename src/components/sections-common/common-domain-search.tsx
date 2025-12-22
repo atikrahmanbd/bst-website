@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef, useTransition } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { AnimatePresence } from "motion/react";
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
@@ -20,12 +20,17 @@ const DOMAIN_PRICING_API = "/api/domain-pricing";
 // Debounce Delay In Milliseconds
 const DEBOUNCE_DELAY = 500;
 
+// Default TLDs To Search (Includes Spotlight TLDs)
+const DEFAULT_SEARCH_TLDS =
+  "com,net,org,xyz,ai,top,shop,store,info,online,biz,tech";
+
 // Domain Pricing Type
 interface DomainPriceData {
   tld: string;
   register: string;
   transfer: string;
   renew: string;
+  period?: number; // 1 = Per Year, 2 = Per 2 Years
 }
 
 export function CommonDomainSearch() {
@@ -33,6 +38,7 @@ export function CommonDomainSearch() {
   const [results, setResults] = useState<DomainCheckResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [tldCount, setTldCount] = useState(550); // Default Fallback
 
   // Refs For Debouncing And Click Outside
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -52,7 +58,10 @@ export function CommonDomainSearch() {
         if (!response.ok) return;
 
         const data = await response.json();
-        const allDomains = [...(data.spotlightTlds || []), ...(data.domains || [])];
+        const allDomains = [
+          ...(data.spotlightTlds || []),
+          ...(data.domains || []),
+        ];
 
         allDomains.forEach((domain: DomainPriceData) => {
           const tld = domain.tld.toLowerCase().startsWith(".")
@@ -60,6 +69,10 @@ export function CommonDomainSearch() {
             : `.${domain.tld.toLowerCase()}`;
           pricingCacheRef.current.set(tld, domain);
         });
+
+        // Update TLD Count From API
+        const domainsCount = data.domains?.length || 550;
+        setTldCount(domainsCount);
 
         pricingLoadedRef.current = true;
       } catch (error) {
@@ -73,7 +86,10 @@ export function CommonDomainSearch() {
   // Handle Click Outside To Close Dropdown
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         setIsDropdownOpen(false);
       }
     };
@@ -85,7 +101,7 @@ export function CommonDomainSearch() {
   const placeholders = [
     "Search Domain Names...",
     "Check Availability...",
-    "550+ Domain Extensions...",
+    `${tldCount}+ Domain Extensions...`,
     "Instant Purchase & Activation...",
     "Domain ID Protection...",
     "Start Building Your Web Presence...",
@@ -104,13 +120,19 @@ export function CommonDomainSearch() {
 
     try {
       // Call Server Action (Not A Public API Endpoint)
-      const data = await checkDomainAvailability(query.trim());
+      const data = await checkDomainAvailability(
+        query.trim(),
+        DEFAULT_SEARCH_TLDS
+      );
 
       if (data.success && data.results) {
         // Merge Pricing From Cache If Backend Didn't Provide It
         const resultsWithPricing = data.results.map((result) => {
           // If Pricing Already Has Register Price, Use It
-          if (result.pricing?.register && typeof result.pricing.register === "string") {
+          if (
+            result.pricing?.register &&
+            typeof result.pricing.register === "string"
+          ) {
             return result;
           }
 
@@ -121,10 +143,12 @@ export function CommonDomainSearch() {
           if (cachedPricing) {
             return {
               ...result,
+              period: cachedPricing.period || 1,
               pricing: {
                 register: cachedPricing.register,
                 transfer: cachedPricing.transfer,
                 renew: cachedPricing.renew,
+                period: cachedPricing.period || 1,
               },
             };
           }
@@ -162,8 +186,8 @@ export function CommonDomainSearch() {
       .replace(/-\./g, ".") // Remove Hyphen Before Dot (test-.com → test.com)
       .replace(/\.-/g, ".") // Remove Hyphen After Dot (.com-test → .comtest, then handle)
       .split(".") // Split By Dots
-      .map(part => part.replace(/^-+|-+$/g, "")) // Remove Leading/Trailing Hyphens From Each Part
-      .filter(part => part.length > 0) // Remove Empty Parts
+      .map((part) => part.replace(/^-+|-+$/g, "")) // Remove Leading/Trailing Hyphens From Each Part
+      .filter((part) => part.length > 0) // Remove Empty Parts
       .join("."); // Rejoin
   };
 
@@ -221,7 +245,9 @@ export function CommonDomainSearch() {
     const [sld, ...tldParts] = domain.split(".");
     const tld = tldParts.join(".");
 
-    const cartUrl = `${WHMCS_CART_URL}&sld=${encodeURIComponent(sld)}&tld=.${encodeURIComponent(tld)}`;
+    const cartUrl = `${WHMCS_CART_URL}&sld=${encodeURIComponent(
+      sld
+    )}&tld=.${encodeURIComponent(tld)}`;
     window.open(cartUrl, "_blank");
   }, []);
 

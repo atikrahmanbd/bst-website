@@ -1,7 +1,14 @@
 "use client";
 
 import { motion, AnimatePresence } from "motion/react";
-import { Check, X, Loader2, ShoppingCart, ArrowRight, Crown } from "lucide-react";
+import {
+  Check,
+  X,
+  Loader2,
+  ShoppingCart,
+  ArrowRight,
+  Crown,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { DomainCheckResult } from "@/lib/types/domain-check";
 
@@ -32,10 +39,12 @@ export function DomainSearchResults({
           isConnected ? "" : "max-w-3xl mx-auto mt-4"
         )}
       >
-        <div className={cn(
-          "bg-card/95 backdrop-blur-sm border-x border-b border-border p-4",
-          isConnected ? "rounded-b-xl border-t-0" : "rounded-xl border"
-        )}>
+        <div
+          className={cn(
+            "bg-card/95 backdrop-blur-sm border-x border-b border-border p-4",
+            isConnected ? "rounded-b-xl border-t-0" : "rounded-xl border"
+          )}
+        >
           <div className="flex items-center justify-center gap-3">
             <Loader2 className="size-5 animate-spin text-primary" />
             <span className="text-sm text-muted-foreground">
@@ -65,22 +74,24 @@ export function DomainSearchResults({
         isConnected ? "" : "max-w-3xl mx-auto mt-4"
       )}
     >
-      <div className={cn(
-        "bg-card/95 backdrop-blur-sm overflow-hidden",
-        isConnected
-          ? "rounded-b-xl border-x border-b border-border"
-          : "rounded-xl border border-border"
-      )}>
+      <div
+        className={cn(
+          "bg-card/95 backdrop-blur-sm overflow-hidden",
+          isConnected
+            ? "rounded-b-xl border-x border-b border-border"
+            : "rounded-xl border border-border"
+        )}
+      >
         {/* Results Header */}
-        <div className={cn(
-          "px-4 py-2.5 border-b border-border bg-muted/30",
-          isConnected && "border-t"
-        )}>
+        <div
+          className={cn(
+            "px-4 py-2.5 border-b border-border bg-muted/30",
+            isConnected && "border-t"
+          )}
+        >
           <p className="text-sm text-muted-foreground">
             Found{" "}
-            <span className="font-semibold text-primary">
-              {availableCount}
-            </span>{" "}
+            <span className="font-semibold text-primary">{availableCount}</span>{" "}
             Available Domain{availableCount !== 1 ? "s" : ""} For{" "}
             <strong>&quot;{query}&quot;</strong>
           </p>
@@ -121,11 +132,7 @@ interface DomainResultRowProps {
   onAddToCart?: (domain: string) => void;
 }
 
-function DomainResultRow({
-  result,
-  index,
-  onAddToCart,
-}: DomainResultRowProps) {
+function DomainResultRow({ result, index, onAddToCart }: DomainResultRowProps) {
   const isAvailable = result.available;
   const isPremium = result.premium;
 
@@ -134,14 +141,23 @@ function DomainResultRow({
     ? result.premiumPricing?.register
     : result.pricing?.register;
 
-  // Safely Convert Price To Displayable String
+  // Safely Convert Price To Displayable String (Remove Decimals For BDT)
   const getDisplayPrice = (value: unknown): string | null => {
-    if (typeof value === "string" && value.trim()) return value;
-    if (typeof value === "number") return value.toLocaleString();
+    if (typeof value === "string" && value.trim()) {
+      // Remove Decimal Part (e.g., "৳15,000.00" → "৳15,000")
+      return value.replace(/\.\d+$/, "");
+    }
+    if (typeof value === "number") {
+      return Math.round(value).toLocaleString();
+    }
     return null;
   };
 
   const price = getDisplayPrice(rawPrice);
+
+  // Get Period (1 = Per Year, 2 = Per 2 Years)
+  const period = result.period || result.pricing?.period || 1;
+  const periodLabel = period === 2 ? "Per 2 Years" : "Per Year";
 
   return (
     <motion.div
@@ -195,11 +211,11 @@ function DomainResultRow({
             )}
           </div>
           <p className="text-xs text-muted-foreground text-left">
-            {isAvailable ? (
-              isPremium ? "Premium Domain Available" : "Available For Registration"
-            ) : (
-              "Already Registered"
-            )}
+            {isAvailable
+              ? isPremium
+                ? "Premium Domain Available"
+                : "Available For Registration"
+              : "Already Registered"}
           </p>
         </div>
       </div>
@@ -210,7 +226,7 @@ function DomainResultRow({
         {isAvailable && price && (
           <div className="text-right">
             <p className="font-bold text-primary">{price}</p>
-            <p className="text-xs text-muted-foreground">Per Year</p>
+            <p className="text-xs text-muted-foreground">{periodLabel}</p>
           </div>
         )}
 
@@ -224,9 +240,7 @@ function DomainResultRow({
             <span className="hidden sm:inline">Buy Now</span>
           </button>
         ) : (
-          <span className="text-sm text-muted-foreground">
-            Taken
-          </span>
+          <span className="text-sm text-muted-foreground">Taken</span>
         )}
       </div>
     </motion.div>

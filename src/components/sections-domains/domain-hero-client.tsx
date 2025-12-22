@@ -2,8 +2,7 @@
 
 import { BackgroundDot } from "@/components/ui/background-dot";
 import GradientText from "@/components/ui/gradient-text";
-import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
-import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { CommonDomainSearch } from "@/components/sections-common/common-domain-search";
 import { DomainOrbitalIcons } from "@/components/sections-domains/domain-orbital-icons";
 import { motion } from "motion/react";
 import {
@@ -71,15 +70,6 @@ export function DomainHeroClient({
   spotlightDomains,
   totalDomains,
 }: DomainHeroClientProps) {
-  const placeholders = [
-    "Search Domain Names...",
-    "Check Availability...",
-    `${totalDomains}+ Domain Extensions...`,
-    "Instant Purchase & Activation...",
-    "Domain ID Protection...",
-    "Start Building Your Web Presence...",
-  ];
-
   const features = [
     "DNS Management",
     "Email Forwarding",
@@ -87,15 +77,6 @@ export function DomainHeroClient({
     "Domain Theft Protection",
     "On-Demand Privacy Protect+",
   ];
-
-  const handleChange = () => {
-    // Handle Input Change
-  };
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Handle Form Submission
-  };
 
   return (
     <div className="relative w-full overflow-hidden bg-background py-16 sm:py-24 md:py-32">
@@ -154,24 +135,7 @@ export function DomainHeroClient({
             </motion.div>
 
             {/* Domain Search */}
-            <div className="mb-8 sm:mb-12">
-              <div className="relative w-full max-w-3xl mx-auto rounded-full">
-                <GlowingEffect
-                  blur={0}
-                  borderWidth={2}
-                  spread={60}
-                  glow={true}
-                  disabled={false}
-                  proximity={48}
-                  inactiveZone={0.01}
-                />
-                <PlaceholdersAndVanishInput
-                  placeholders={placeholders}
-                  onChange={handleChange}
-                  onSubmit={onSubmit}
-                />
-              </div>
-            </div>
+            <CommonDomainSearch />
           </div>
 
           {/* Pricing & Features Split Layout */}

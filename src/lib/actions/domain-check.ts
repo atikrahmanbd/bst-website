@@ -14,7 +14,7 @@ const WHMCS_DOMAINCHECK_URL =
   process.env.WHMCS_DOMAINCHECK_URL || "https://my.bst.com.bd/bst_domaincheck.php";
 const WHMCS_DOMAINCHECK_KEY = process.env.WHMCS_DOMAINCHECK_KEY || "";
 
-// Default TLDs To Check If No Specific TLD Provided
+// Default TLDs To Check If No Specific TLD Provided (Fallback If Frontend Doesn't Pass)
 const DEFAULT_TLDS = ["com", "net", "org", "xyz", "online", "store"];
 
 // WHMCS Domain Check Response Type
@@ -114,22 +114,23 @@ export async function checkDomainAvailability(
     // Determine TLDs To Check (Without Dot Prefix)
     let tldsToCheck: string[] = [];
 
-    if (tldsParam) {
-      // User Specified TLDs
-      tldsToCheck = tldsParam
-        .split(",")
-        .map((t) => t.trim().replace(/^\./, ""));
-    } else if (requestedTld) {
-      // Single TLD From Domain + Popular Alternatives
+    // Get Base TLD List From Param Or Default
+    const baseTlds = tldsParam
+      ? tldsParam.split(",").map((t) => t.trim().replace(/^\./, ""))
+      : DEFAULT_TLDS;
+
+    if (requestedTld) {
+      // User Typed A Specific TLD (e.g., "example.amsterdam")
+      // Put That TLD First, Then Add Others From The List
       tldsToCheck = [requestedTld];
-      for (const tld of DEFAULT_TLDS) {
-        if (tld !== requestedTld && tldsToCheck.length < 6) {
+      for (const tld of baseTlds) {
+        if (tld !== requestedTld && !tldsToCheck.includes(tld)) {
           tldsToCheck.push(tld);
         }
       }
     } else {
-      // Default TLDs
-      tldsToCheck = DEFAULT_TLDS.slice(0, 6);
+      // No Specific TLD Typed, Use The Full List
+      tldsToCheck = baseTlds;
     }
 
     // Check All Domains Via WHMCS Endpoint (Which Calls ResellerClub)
