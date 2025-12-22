@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import {
   Check,
+  X,
   Crown,
   Zap,
   Globe,
@@ -18,7 +19,6 @@ import {
   ShieldCheck,
   MousePointerClick,
   Cloud,
-  Code,
   Rocket,
 } from "lucide-react";
 import GradientText from "@/components/ui/gradient-text";
@@ -29,20 +29,34 @@ import {
 import ElectricBorder from "@/components/ui/react-bits/ElectricBorder";
 import { useState } from "react";
 
-export const plans = [
+// Feature Can Be String (Included) or Object With excluded: true
+type PlanFeature = string | { name: string; excluded: true };
+
+export const plans: {
+  name: string;
+  monthlyPrice: number;
+  description: string;
+  features: PlanFeature[];
+  popular: boolean;
+}[] = [
   {
     name: "Starter",
     monthlyPrice: 250,
-    description: "Perfect For Personal Websites/Blogs",
+    description: "Perfect For Personal Websites and Blogs",
     features: [
-      "1 Website",
-      "10 GB SSD Storage",
-      "100 GB Bandwidth",
-      "5 Email Accounts",
-      "Free SSL Certificate",
+      "5 GB NVMe Storage",
       "cPanel Control Panel",
+      "2 Websites (1 Main + 1 Addon)",
+      "Unlimited Email Accounts",
+      "Unlimited Bandwidth",
+      "2 GB RAM & 2 vCPU",
+      "Free SSL Certificate",
+      "PHP 4.4 To 8.X Support",
+      "Node.js & Python Support",
+      "LiteSpeed Cache",
       "Daily Backups",
-      "24/7 Support",
+      { name: "SSH Access", excluded: true },
+      "24/7 Email Support",
     ],
     popular: false,
   },
@@ -51,33 +65,40 @@ export const plans = [
     monthlyPrice: 450,
     description: "Ideal For Growing Businesses",
     features: [
-      "5 Websites",
-      "50 GB SSD Storage",
-      "500 GB Bandwidth",
-      "25 Email Accounts",
-      "Free SSL Certificate",
+      "10 GB NVMe Storage",
       "cPanel Control Panel",
+      "Unlimited Websites",
+      "Unlimited Email Accounts",
+      "Unlimited Bandwidth",
+      "2 GB RAM & 2 vCPU",
+      "Free SSL Certificate",
+      "PHP 4.4 To 8.X Support",
+      "Node.js & Python Support",
+      "LiteSpeed Cache",
       "Daily Backups",
-      "Priority Support",
-      "Free Domain (1 Year)",
+      "SSH Access",
+      "24/7 Email Support",
     ],
     popular: true,
   },
   {
     name: "Professional",
     monthlyPrice: 850,
-    description: "For High-Traffic and Applications",
+    description: "For High-Traffic Sites and Applications",
     features: [
-      "Unlimited Websites",
-      "100 GB SSD Storage",
-      "Unlimited Bandwidth",
-      "Unlimited Email Accounts",
-      "Free SSL Certificate",
+      "25 GB NVMe Storage",
       "cPanel Control Panel",
+      "Unlimited Websites",
+      "Unlimited Email Accounts",
+      "Unlimited Bandwidth",
+      "2 GB RAM & 2 vCPU",
+      "Free SSL Certificate",
+      "PHP 4.4 To 8.X Support",
+      "Node.js & Python Support",
+      "LiteSpeed Cache",
       "Daily Backups",
-      "Priority Support",
-      "Free Domain (1 Year)",
-      "Free Website Migration",
+      "SSH Access",
+      "24/7 Email Support",
     ],
     popular: false,
   },
@@ -86,18 +107,16 @@ export const plans = [
     monthlyPrice: 1500,
     description: "Enterprise-Grade For Large Organizations",
     features: [
+      "50 GB NVMe Storage",
       "Unlimited Websites",
-      "200 GB NVMe SSD Storage",
-      "Unlimited Bandwidth",
-      "Unlimited Email Accounts",
-      "Free SSL Certificate",
-      "cPanel Control Panel",
-      "Real-Time Backups",
-      "Dedicated Support Manager",
+      "4 GB RAM & 2 vCPU",
       "Free Domain (1 Year)",
-      "Free Website Migration",
-      "4 GB RAM & 4 vCPU",
-      "Priority Resource Allocation",
+      "Premium Cloud Servers",
+      "PCI Compliance",
+      "PHP 4.4 To 8.X Support",
+      "Node.js & Python Support",
+      "Dedicated Support Manager",
+      "Priority Support",
     ],
     popular: false,
   },
@@ -235,12 +254,30 @@ export function HostingPlans() {
 
                       <div className="flex-1 flex flex-col">
                         <ul className="space-y-3 mb-8 flex-1">
-                          {plan.features.map((feature, i) => (
-                            <li key={i} className="flex items-start gap-3">
-                              <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                              <span className="text-sm">{feature}</span>
-                            </li>
-                          ))}
+                          {plan.features.map((feature, i) => {
+                            const isExcluded =
+                              typeof feature === "object" && feature.excluded;
+                            const featureName =
+                              typeof feature === "string"
+                                ? feature
+                                : feature.name;
+                            return (
+                              <li key={i} className="flex items-start gap-3">
+                                {isExcluded ? (
+                                  <X className="h-5 w-5 text-red-500/50 shrink-0 mt-0.5" />
+                                ) : (
+                                  <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                                )}
+                                <span
+                                  className={`text-sm ${
+                                    isExcluded ? "text-muted-foreground" : ""
+                                  }`}
+                                >
+                                  {featureName}
+                                </span>
+                              </li>
+                            );
+                          })}
                         </ul>
                       </div>
 
@@ -319,12 +356,36 @@ export function HostingPlans() {
 
                           <div className="flex-1 flex flex-col">
                             <ul className="space-y-3 mb-8 flex-1">
-                              {plan.features.map((feature, i) => (
-                                <li key={i} className="flex items-start gap-3">
-                                  <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                                  <span className="text-sm">{feature}</span>
-                                </li>
-                              ))}
+                              {plan.features.map((feature, i) => {
+                                const isExcluded =
+                                  typeof feature === "object" &&
+                                  feature.excluded;
+                                const featureName =
+                                  typeof feature === "string"
+                                    ? feature
+                                    : feature.name;
+                                return (
+                                  <li
+                                    key={i}
+                                    className="flex items-start gap-3"
+                                  >
+                                    {isExcluded ? (
+                                      <X className="h-5 w-5 text-red-500/50 shrink-0 mt-0.5" />
+                                    ) : (
+                                      <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                                    )}
+                                    <span
+                                      className={`text-sm ${
+                                        isExcluded
+                                          ? "text-muted-foreground"
+                                          : ""
+                                      }`}
+                                    >
+                                      {featureName}
+                                    </span>
+                                  </li>
+                                );
+                              })}
                             </ul>
                           </div>
 
@@ -391,12 +452,30 @@ export function HostingPlans() {
 
                     <div className="flex-1 flex flex-col">
                       <ul className="space-y-3 mb-8 flex-1">
-                        {plan.features.map((feature, i) => (
-                          <li key={i} className="flex items-start gap-3">
-                            <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                            <span className="text-sm">{feature}</span>
-                          </li>
-                        ))}
+                        {plan.features.map((feature, i) => {
+                          const isExcluded =
+                            typeof feature === "object" && feature.excluded;
+                          const featureName =
+                            typeof feature === "string"
+                              ? feature
+                              : feature.name;
+                          return (
+                            <li key={i} className="flex items-start gap-3">
+                              {isExcluded ? (
+                                <X className="h-5 w-5 text-red-500/50 shrink-0 mt-0.5" />
+                              ) : (
+                                <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                              )}
+                              <span
+                                className={`text-sm ${
+                                  isExcluded ? "text-muted-foreground" : ""
+                                }`}
+                              >
+                                {featureName}
+                              </span>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
 
@@ -423,34 +502,37 @@ export function HostingPlans() {
           const pricing = calculatePrice(corporatePlan.monthlyPrice);
 
           const featureCards = [
-            { icon: Globe, value: "Unlimited", label: "Websites" },
-            { icon: HardDrive, value: "200 GB", label: "NVMe SSD" },
-            { icon: ArrowLeftRight, value: "Unlimited", label: "Bandwidth" },
-            { icon: Mail, value: "Unlimited", label: "Emails" },
-            { icon: Lock, value: "Free", label: "SSL" },
+            { icon: HardDrive, value: "50 GB", label: "NVMe SSD" },
             { icon: LayoutDashboard, value: "cPanel", label: "Control" },
-            { icon: Database, value: "Real-Time", label: "Backups" },
-            { icon: Headphones, value: "24/7", label: "Support" },
-            { icon: Gauge, value: "LiteSpeed", label: "Server" },
+            { icon: Headphones, value: "Priority", label: "Support" },
+            { icon: Globe, value: "Unlimited", label: "Websites" },
+            { icon: Mail, value: "Unlimited", label: "Emails" },
+            { icon: ArrowLeftRight, value: "Unlimited", label: "Bandwidth" },
+            { icon: Lock, value: "Free", label: "SSL" },
+            { icon: Database, value: "Daily", label: "Backups" },
             { icon: Activity, value: "99.99%", label: "Uptime" },
-            { icon: ShieldCheck, value: "Free", label: "Firewall" },
+            { icon: Gauge, value: "4 GB", label: "LVE RAM" },
+            { icon: ShieldCheck, value: "PCI", label: "Compliant" },
             { icon: MousePointerClick, value: "1-Click", label: "Install" },
           ];
 
           const whatsIncluded = [
-            "Free Domain For First Year",
             "Free SSL Certificate",
-            "One-Click WordPress Install",
-            "Automatic Daily Backups",
-            "Free Website Migration",
+            "Free Domain For First Year",
+            "PHP 4.4 To 8.X Support",
+            "Node.js & Python Support",
+            "On Demand Dedicated IP",
+            "Firewall & Malware Protection",
+            "Dedicated Support Manager",
           ];
 
           const performanceFeatures = [
+            { icon: HardDrive, label: "50 GB NVMe Storage" },
             { icon: Rocket, label: "LiteSpeed Web Server" },
-            { icon: HardDrive, label: "SSD NVMe Storage" },
-            { icon: Cloud, label: "CloudLinux OS" },
-            { icon: Code, label: "PHP 8.x Support" },
-            { icon: Zap, label: "HTTP/3 & QUIC Enabled" },
+            { icon: Cloud, label: "Premium Cloud Servers" },
+            { icon: Zap, label: "5120 IOPS & 250 MB/S IO" },
+            { icon: Gauge, label: "4 GB RAM & 2 vCPU (LVE)" },
+            { icon: Activity, label: "Speed Without Overcrowding" },
           ];
 
           return (
