@@ -84,7 +84,7 @@ const techStacks = [
   "django",
   "mongodb",
   "mysql",
-  "postfresql",
+  "postgresql",
   "firebase",
   "docker",
   "aws",
@@ -183,15 +183,19 @@ export const Skeleton = () => {
 
   const getSize = (index: number) => {
     if (index === 3) return "h-16 w-16 sm:h-20 sm:w-20 md:h-28 md:w-28"; // Center (4th icon) - largest
-    if (index === 2 || index === 4) return "h-14 w-14 sm:h-18 sm:w-18 md:h-24 md:w-24"; // Positions 3 and 5
-    if (index === 1 || index === 5) return "h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20"; // Positions 2 and 6
+    if (index === 2 || index === 4)
+      return "h-14 w-14 sm:h-18 sm:w-18 md:h-24 md:w-24"; // Positions 3 and 5
+    if (index === 1 || index === 5)
+      return "h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20"; // Positions 2 and 6
     return "h-10 w-10 sm:h-14 sm:w-14 md:h-16 md:w-16"; // First and last - smallest
   };
 
   const getIconSize = (index: number) => {
     if (index === 3) return "h-14 w-14 sm:h-16 sm:w-16 md:h-24 md:w-24"; // Center - largest
-    if (index === 2 || index === 4) return "h-12 w-12 sm:h-14 sm:w-14 md:h-18 md:w-18"; // Positions 3 and 5
-    if (index === 1 || index === 5) return "h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16"; // Positions 2 and 6
+    if (index === 2 || index === 4)
+      return "h-12 w-12 sm:h-14 sm:w-14 md:h-18 md:w-18"; // Positions 3 and 5
+    if (index === 1 || index === 5)
+      return "h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16"; // Positions 2 and 6
     return "h-8 w-8 sm:h-10 sm:w-10 md:h-16 md:w-16"; // First and last - smallest
   };
 

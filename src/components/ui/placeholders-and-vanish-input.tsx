@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Search } from "lucide-react";
+import { Search, Eraser } from "lucide-react";
 
 const useThemeTextColor = () => {
   const [isGreenTheme, setIsGreenTheme] = useState(true);
@@ -46,12 +46,18 @@ export function PlaceholdersAndVanishInput({
   placeholders,
   onChange,
   onSubmit,
-  buttonText = "Search Domain",
+  onClear,
+  buttonText = "Type To Search Domain",
+  hasDropdown = false,
+  disableVanish = false,
 }: {
   placeholders: string[];
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  onClear?: () => void;
   buttonText?: string;
+  hasDropdown?: boolean;
+  disableVanish?: boolean;
 }) {
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
   const isGreenTheme = useThemeTextColor();
@@ -298,7 +304,7 @@ export function PlaceholdersAndVanishInput({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && !animating) {
+    if (e.key === "Enter" && !animating && !disableVanish) {
       vanishAndSubmit();
     }
   };
@@ -317,11 +323,76 @@ export function PlaceholdersAndVanishInput({
     }
   };
 
+  // Clear With Vanish Effect
+  const handleClear = () => {
+    if (!value) return;
+
+    setAnimating(true);
+    draw();
+
+    const maxX = newDataRef.current.reduce(
+      (prev, current) => (current.x > prev ? current.x : prev),
+      0
+    );
+
+    // Custom Animate That Calls onClear When Done
+    const animateClear = (start: number) => {
+      const animateFrame = (pos: number = 0) => {
+        requestAnimationFrame(() => {
+          const newArr = [];
+          for (let i = 0; i < newDataRef.current.length; i++) {
+            const current = newDataRef.current[i];
+            if (current.x < pos) {
+              newArr.push(current);
+            } else {
+              if (current.r <= 0) {
+                current.r = 0;
+                continue;
+              }
+              current.x += Math.random() > 0.5 ? 1 : -1;
+              current.y += Math.random() > 0.5 ? 1 : -1;
+              current.r -= 0.05 * Math.random();
+              newArr.push(current);
+            }
+          }
+          newDataRef.current = newArr;
+          const ctx = canvasRef.current?.getContext("2d");
+          if (ctx) {
+            ctx.clearRect(pos, 0, 800, 800);
+            newDataRef.current.forEach((t) => {
+              const { x: n, y: i, r: s, color: color } = t;
+              if (n > pos) {
+                ctx.beginPath();
+                ctx.rect(n, i, s, s);
+                ctx.fillStyle = color;
+                ctx.strokeStyle = color;
+                ctx.stroke();
+              }
+            });
+          }
+          if (newDataRef.current.length > 0) {
+            animateFrame(pos - 8);
+          } else {
+            setValue("");
+            previousValueRef.current = "";
+            setAnimating(false);
+            onClear?.();
+          }
+        });
+      };
+      animateFrame(start);
+    };
+
+    animateClear(maxX);
+  };
+
   const previousValueRef = useRef("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    vanishAndSubmit();
+    if (!disableVanish) {
+      vanishAndSubmit();
+    }
     if (onSubmit) {
       onSubmit(e);
     }
@@ -366,14 +437,20 @@ export function PlaceholdersAndVanishInput({
   return (
     <form
       className={cn(
-        "w-full relative rounded-full transition duration-200 p-2.5",
+        "w-full relative p-2.5",
         "bg-white/30 dark:bg-black/20 backdrop-blur-lg",
         "border border-border shadow-2xl",
-        value && "bg-white/30 dark:bg-black/40"
+        "transition-all duration-300 ease-out",
+        value && "bg-white/30 dark:bg-black/40",
+        hasDropdown ? "rounded-t-2xl rounded-b-none border-b-0" : "rounded-full"
       )}
       onSubmit={handleSubmit}
     >
-      <div className="relative h-14 rounded-full bg-white dark:bg-black backdrop-blur-sm overflow-hidden border border-primary/60 dark:border-primary/30">
+      <div className={cn(
+        "relative h-14 bg-white dark:bg-black backdrop-blur-sm overflow-hidden border border-primary/60 dark:border-primary/30",
+        "transition-all duration-300 ease-out",
+        hasDropdown ? "rounded-t-xl rounded-b-none" : "rounded-full"
+      )}>
         <canvas
           className={cn(
             "absolute pointer-events-none text-base transform scale-50 top-0 left-0 origin-top-left filter invert dark:invert-0 pr-20 transition-opacity duration-200",
@@ -393,6 +470,27 @@ export function PlaceholdersAndVanishInput({
           )}
         />
 
+        {/* Clear Button - Only Shows When There's Text */}
+        <AnimatePresence>
+          {value && !animating && (
+            <motion.button
+              type="button"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.15 }}
+              onClick={handleClear}
+              className="absolute right-[56px] sm:right-[165px] top-1/2 z-50 -translate-y-1/2 h-8 rounded-full flex items-center justify-center gap-1.5 px-2.5 transition-colors bg-muted/80 hover:bg-muted border border-border text-muted-foreground hover:text-foreground"
+            >
+              <Eraser className="h-4 w-4 flex-shrink-0" />
+              <span className="hidden sm:inline text-sm font-medium whitespace-nowrap">
+                Clear
+              </span>
+            </motion.button>
+          )}
+        </AnimatePresence>
+
+        {/* Search Button */}
         <button
           type="submit"
           onClick={(e) => {
@@ -410,7 +508,7 @@ export function PlaceholdersAndVanishInput({
         >
           <Search className="h-4 w-4 flex-shrink-0" />
           <span className="hidden sm:inline text-sm font-medium whitespace-nowrap">
-            {buttonText}
+            {value ? "Search Domain" : buttonText}
           </span>
         </button>
 
