@@ -281,9 +281,6 @@ export function DomainPricingTableClient({
                           <th className="px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-center text-sm sm:text-base font-semibold text-foreground border-l border-border/30 bg-accent/40">
                             Renew
                           </th>
-                          <th className="px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-center text-sm sm:text-base font-semibold text-foreground border-l border-border/30 bg-accent/50">
-                            Grace
-                          </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -312,9 +309,6 @@ export function DomainPricingTableClient({
                             <td className="px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-center text-base sm:text-lg text-muted-foreground border-l border-border/30 bg-accent/20">
                               {domain.renew}
                               <PeriodBadge period={domain.period || 1} />
-                            </td>
-                            <td className="px-3 sm:px-4 md:px-5 py-4 sm:py-5 text-center text-base sm:text-lg text-muted-foreground border-l border-border/30 bg-accent/25">
-                              {domain.grace || "N/A"}
                             </td>
                           </tr>
                         ))}
