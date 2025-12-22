@@ -36,7 +36,7 @@ function DomainTagBadge({ tag }: { tag: string }) {
     sale: {
       label: "Sale",
       icon: <Tag className="size-3" />,
-      className: "bg-gradient-to-r from-emerald-500 to-green-600 text-white",
+      className: "bg-primary text-primary-foreground",
     },
     hot: {
       label: "Hot",
